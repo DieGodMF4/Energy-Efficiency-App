@@ -20,12 +20,4 @@ public class Location {
     public float getLongitude() {
         return longitude;
     }
-
-    public String getIsland() {
-        return island;
-    }
-
-    public String getName() {
-        return name;
-    }
 }
