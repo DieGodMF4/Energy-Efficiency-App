@@ -4,37 +4,37 @@ import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
-import java.util.ArrayList;
 import java.util.concurrent.CountDownLatch;
 
 public final class TopicSubscriber implements Subscriber {
     private static final String url = ActiveMQConnection.DEFAULT_BROKER_URL;
     private final String topicName;
     private final String clientID;
+    private final String basePath;
 
-    public TopicSubscriber(String topicName, String clientID) {
+    public TopicSubscriber(String topicName, String clientID, String basePath) {
         this.topicName = topicName;
         this.clientID = clientID;
+        this.basePath = basePath;
     }
 
     @Override
-    public ArrayList<String> receiveMessage() throws MyReceiverException {
-        ArrayList<String> answers = new ArrayList<>();
+    public void receiveMessage() throws MyReceiverException {
+        FileEventStoreBuilder storeBuilder = new FileEventStoreBuilder(basePath, topicName);
         try {
             MessageConsumer consumer = buildConnectionAndTopic();
 
             CountDownLatch latch = new CountDownLatch(1);
             consumer.setMessageListener(message -> {
                 try {
-                    answers.add(((TextMessage) message).getText());
-                } catch (JMSException e) {
+                    storeBuilder.storeMessage(((TextMessage) message).getText());
+                } catch (JMSException | MyReceiverException e) {
                     throw new RuntimeException(e);
                 } finally {
                     latch.countDown();
                 }
             });
-            System.out.println("running");
-            return answers;
+            System.out.println("Running...");
 
         } catch (JMSException e) {
             throw new MyReceiverException("Error receiving message from ActiveMQ", e);

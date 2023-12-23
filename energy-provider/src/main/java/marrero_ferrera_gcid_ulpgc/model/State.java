@@ -1,4 +1,5 @@
 package marrero_ferrera_gcid_ulpgc.model;
 
-public class Energy {
+public enum State {
+    Good, Bad, Medium;
 }

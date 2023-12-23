@@ -4,69 +4,80 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f71dfc40-34de-41c8-94af-a6a669473290" name="Changes" comment="first commit.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/model/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/model/Location.java" afterDir="false" />
+    <list default="true" id="08c0914d-b1b9-4648-a6ac-be09ae099e33" name="Changes" comment="">
+      <change afterPath="$USER_HOME$/IdeaProjects/final_project/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$USER_HOME$/IdeaProjects/final_project/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$USER_HOME$/IdeaProjects/final_project/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/ElectricEnergySupplier.java" afterDir="false" />
+      <change afterPath="$USER_HOME$/IdeaProjects/final_project/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/JMSPriceStore.java" afterDir="false" />
+      <change afterPath="$USER_HOME$/IdeaProjects/final_project/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java" afterDir="false" />
+      <change afterPath="$USER_HOME$/IdeaProjects/final_project/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/PriceStore.java" afterDir="false" />
+      <change afterPath="$USER_HOME$/IdeaProjects/final_project/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/PriceSupplier.java" afterDir="false" />
+      <change afterPath="$USER_HOME$/IdeaProjects/final_project/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/model/State.java" afterDir="false" />
+      <change afterPath="$USER_HOME$/IdeaProjects/final_project/energy-provider/src/test/java/Tests.java" afterDir="false" />
+      <change beforePath="$USER_HOME$/IdeaProjects/final_project/.idea/workspace.xml" beforeDir="false" afterPath="$USER_HOME$/IdeaProjects/final_project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$USER_HOME$/IdeaProjects/final_project/energy-provider/pom.xml" beforeDir="false" afterPath="$USER_HOME$/IdeaProjects/final_project/energy-provider/pom.xml" afterDir="false" />
+      <change beforePath="$USER_HOME$/IdeaProjects/final_project/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/model/Energy.java" beforeDir="false" afterPath="$USER_HOME$/IdeaProjects/final_project/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/model/EnergyPrice.java" afterDir="false" />
+      <change beforePath="$USER_HOME$/IdeaProjects/final_project/event-store-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/EventStoreBuilder.java" beforeDir="false" afterPath="$USER_HOME$/IdeaProjects/final_project/event-store-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/EventStoreBuilder.java" afterDir="false" />
+      <change beforePath="$USER_HOME$/IdeaProjects/final_project/event-store-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/FileEventStoreBuilder.java" beforeDir="false" afterPath="$USER_HOME$/IdeaProjects/final_project/event-store-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/FileEventStoreBuilder.java" afterDir="false" />
+      <change beforePath="$USER_HOME$/IdeaProjects/final_project/event-store-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java" beforeDir="false" afterPath="$USER_HOME$/IdeaProjects/final_project/event-store-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java" afterDir="false" />
+      <change beforePath="$USER_HOME$/IdeaProjects/final_project/event-store-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/Subscriber.java" beforeDir="false" afterPath="$USER_HOME$/IdeaProjects/final_project/event-store-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/Subscriber.java" afterDir="false" />
+      <change beforePath="$USER_HOME$/IdeaProjects/final_project/event-store-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/TopicSubscriber.java" beforeDir="false" afterPath="$USER_HOME$/IdeaProjects/final_project/event-store-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/TopicSubscriber.java" afterDir="false" />
+      <change beforePath="$USER_HOME$/IdeaProjects/final_project/event-store-builder/src/test/java/JsonTest.java" beforeDir="false" />
+      <change beforePath="$USER_HOME$/IdeaProjects/final_project/event-store-builder/src/test/java/Main.java" beforeDir="false" />
+      <change beforePath="$USER_HOME$/IdeaProjects/final_project/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java" beforeDir="false" afterPath="$USER_HOME$/IdeaProjects/final_project/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java" afterDir="false" />
+      <change beforePath="$USER_HOME$/IdeaProjects/final_project/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/model/Location.java" beforeDir="false" afterPath="$USER_HOME$/IdeaProjects/final_project/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/model/Location.java" afterDir="false" />
+      <change beforePath="$USER_HOME$/IdeaProjects/final_project/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/model/Weather.java" beforeDir="false" afterPath="$USER_HOME$/IdeaProjects/final_project/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/model/Weather.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 6
-}</component>
-  <component name="ProjectId" id="2ZTyHOKZcLO365sqxB3zaHMgiwa" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 6
+}]]></component>
+  <component name="ProjectId" id="2Zws0l7yqOabJ3bCK1Fk16ecDor" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/dmarr/Documents/DACD/final_project/weather-provider/src/main/java&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/dmarr/Documents/DACD",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "project.propCompiler",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\dmarr\Documents\DACD\final_project\weather-provider\src\main\java" />
-      <recent name="C:\Users\dmarr\Documents\DACD\final_project" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\dmarr\Documents\DACD\final_project" />
-      <recent name="C:\Users\dmarr\Documents\DACD\final_project\src" />
+      <recent name="C:\Users\dmarr\Documents\DACD" />
+      <recent name="C:\Users\dmarr\IdeaProjects" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main (1)">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="JsonTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="JsonTest" />
+      <module name="event-store-builder" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="marrero_ferrera_gcid_ulpgc.control.Main" />
       <module name="event-store-builder" />
+      <option name="PROGRAM_PARAMETERS" value="prediction.Weather Diego $USER_HOME$/IdeaProjects/final_project/datalake/eventstore/" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="marrero_ferrera_gcid_ulpgc.control.*" />
@@ -80,7 +91,7 @@
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="marrero_ferrera_gcid_ulpgc.control.Main" />
       <module name="weather-provider" />
-      <option name="PROGRAM_PARAMETERS" value="3c3aea5ce433b076c2f83b0c608896d8 prediction.Weather" />
+      <option name="PROGRAM_PARAMETERS" value="3c3aea5ce433b076c2f83b0c608896d8 prediction.Weather 28.01f -15.58f" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="marrero_ferrera_gcid_ulpgc.control.*" />
@@ -94,48 +105,41 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main (1)" />
+        <item itemvalue="Application.JsonTest" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f71dfc40-34de-41c8-94af-a6a669473290" name="Changes" comment="" />
-      <created>1702460277327</created>
+      <changelist id="08c0914d-b1b9-4648-a6ac-be09ae099e33" name="Changes" comment="" />
+      <created>1703344258743</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1702460277327</updated>
-      <workItem from="1702460278672" duration="874000" />
-      <workItem from="1702648077392" duration="72000" />
-      <workItem from="1702648162682" duration="392000" />
-      <workItem from="1702648566091" duration="2694000" />
-      <workItem from="1702892305602" duration="90000" />
+      <updated>1703344258743</updated>
+      <workItem from="1703344262300" duration="4480000" />
     </task>
-    <task id="LOCAL-00001" summary="first commit.">
-      <option name="closed" value="true" />
-      <created>1702650442029</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1702650442029</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="first commit." />
-    <option name="LAST_COMMIT_MESSAGE" value="first commit." />
-  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java</url>
+          <url>file://$PROJECT_DIR$/event-store-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java</url>
           <line>8</line>
-          <option name="timeStamp" value="1" />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/event-store-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/TopicSubscriber.java</url>
+          <line>21</line>
+          <properties class="marrero_ferrera_gcid_ulpgc.control.TopicSubscriber" method="receiveMessage">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

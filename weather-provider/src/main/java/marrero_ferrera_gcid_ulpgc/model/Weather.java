@@ -23,38 +23,6 @@ public class Weather {
         this.wind = wind;
     }
 
-    public int getClouds() {
-        return clouds;
-    }
-
-    public float getTemperature() {
-        return temperature;
-    }
-
-    public float getHumidity() {
-        return humidity;
-    }
-
-    public Location getLocation() {
-        return location;
-    }
-
-    public String getTsToString() {
-        return ts.toString();
-    }
-
-    public String getWeatherType() {
-        return weatherType;
-    }
-
-    public float getRain() {
-        return rain;
-    }
-
-    public float getWind() {
-        return wind;
-    }
-
     public String getSs() {
         return "WeatherProvider";
     }

@@ -13,38 +13,38 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 public class FileEventStoreBuilder implements EventStoreBuilder {
 
     private final String basePath;
+    private final String topicName;
 
-    public FileEventStoreBuilder(String basePath) {
+    public FileEventStoreBuilder(String basePath, String topicName) {
         this.basePath = basePath;
+        this.topicName = topicName;
     }
 
     @Override
-    public void storeMessages(ArrayList<String> jsonStrings) throws MyReceiverException {
+    public void storeMessage(String jsonString) throws MyReceiverException {
         ObjectMapper objectMapper = new ObjectMapper();
-        for (String jsonString : jsonStrings) {
-            JsonNode jsonNode = null;
-            try {
-                jsonNode = objectMapper.readTree(jsonString);
-            } catch (JsonProcessingException e) {
-                throw new MyReceiverException("An error occurred while parsing the json String.", e);
-            }
-
-            String source = getSource(jsonNode);
-            String date = extractDate(jsonNode);
-
-            String directoryPath = basePath + source + "/";
-            String fileName = date + ".events";
-            String fullPath = Paths.get(directoryPath, fileName).toString();
-
-            writeJsonToFile(fullPath, jsonString);
+        JsonNode jsonNode = null;
+        try {
+            jsonNode = objectMapper.readTree(jsonString);
+        } catch (JsonProcessingException e) {
+            throw new MyReceiverException("An error occurred while parsing the json String.", e);
         }
-    }
+
+        String source = getSource(jsonNode);
+        String date = extractDate(jsonNode);
+
+        String directoryPath = basePath + topicName + "/" + source + "/";
+        System.out.println(directoryPath);
+        String fileName = date + ".events";
+        String fullPath = Paths.get(directoryPath, fileName).toString();
+
+        writeJsonToFile(fullPath, jsonString);
+}
 
     private void writeJsonToFile(String filePath, String jsonString) throws MyReceiverException {
         try {

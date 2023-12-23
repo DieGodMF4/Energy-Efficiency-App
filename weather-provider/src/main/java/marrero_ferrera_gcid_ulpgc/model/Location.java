@@ -3,13 +3,11 @@ package marrero_ferrera_gcid_ulpgc.model;
 public class Location {
     private final float latitude;
     private final float longitude;
-    private final String island;
     private final String name;
 
-    public Location(float latitude, float longitude, String island, String name) {
+    public Location(float latitude, float longitude, String name) {
         this.latitude = latitude;
         this.longitude = longitude;
-        this.island = island;
         this.name = name;
     }
 
