@@ -1,9 +1,8 @@
 package marrero_ferrera_gcid_ulpgc.control;
 
-import com.google.gson.JsonIOException;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import com.google.gson.*;
 import marrero_ferrera_gcid_ulpgc.model.EnergyPrice;
+import marrero_ferrera_gcid_ulpgc.model.State;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -11,39 +10,28 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
-import java.time.Instant;
+import java.time.*;
+import java.util.ArrayList;
 
 public class ElectricEnergySupplier implements PriceSupplier {
-    private final String apiKey;
-
-    public ElectricEnergySupplier(String apiKey) {
-        this.apiKey = apiKey;
-    }
+    public ElectricEnergySupplier() {}
 
     @Override
-    public EnergyPrice getPrice(Instant ts) {
-        long unixTimestamp = ts.getEpochSecond();
+    public ArrayList<EnergyPrice> getPriceForToday() throws MySenderException {
+        ArrayList<EnergyPrice> prices = new ArrayList<>();
         try {
-            JsonObject jsonObject = apiConnector(location);
+            JsonObject jsonObject = apiConnector();
+            JsonArray valuesArray = jsonParsingToValues(jsonObject);
 
-            int listSize = jsonObject.getAsJsonArray("list").size();
+            if (valuesArray != null) {
+                for (JsonElement valueElement : valuesArray) {
+                    float value = valueElement.getAsJsonObject().get("value").getAsFloat();
+                    String datetime = valueElement.getAsJsonObject().get("datetime").getAsString();
 
-            for (int i = 0; i < listSize; i++) {
-                JsonObject currentListObject = jsonObject.getAsJsonArray("list").get(i).getAsJsonObject();
-                if (currentListObject.get("dt").getAsLong() == unixTimestamp) {
-                    float temperature = currentListObject.getAsJsonObject("main")
-                            .get("temp").getAsFloat();
-                    String weatherType = currentListObject.getAsJsonArray("weather")
-                            .get(0).getAsJsonObject().get("main").getAsString();
-                    int cloud = currentListObject.getAsJsonObject("clouds")
-                            .get("all").getAsInt();
-                    float humidity = currentListObject.getAsJsonObject("main")
-                            .get("humidity").getAsFloat();
-                    float rain = currentListObject.get("pop").getAsFloat();
-                    float wind = currentListObject.getAsJsonObject("wind")
-                            .get("speed").getAsFloat();
-                    return new Weather(weatherType, cloud, temperature, humidity, location, ts, rain, wind);
+                    prices.add(new EnergyPrice(value, datetime, getStateOfPrice()));
+                    System.out.println("Valor: " + value + ", DateTime: " + datetime);
                 }
+                return
             }
             throw new MySenderException("Location or time were incorrect!");
         } catch (Exception e) {
@@ -51,10 +39,11 @@ public class ElectricEnergySupplier implements PriceSupplier {
         }
     }
 
-    private JsonObject apiConnector(Location location) {
+    private JsonObject apiConnector() {
         HttpClient httpClient = HttpClients.createDefault();
-        String httpUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + location.getLatitude() +
-                "&lon=" + location.getLongitude() + "&units=metric&appid=" + apiKey;
+        String httpUrl = "https://apidatos.ree.es/es/datos/mercados/precios-mercados-tiempo-real?start_date=" +
+                obtainInstantMidNight(LocalDate.now()) + "&end_date=" +
+                obtainInstantMidNight(LocalDate.now().plusDays(1)) + "&time_trunc=hour";
         HttpGet httpGet = new HttpGet(httpUrl);
 
         try {
@@ -65,5 +54,37 @@ public class ElectricEnergySupplier implements PriceSupplier {
         } catch (IOException e) {
             throw new JsonIOException(e);
         }
+    }
+
+    private Instant obtainInstantMidNight(LocalDate date) {
+        LocalDateTime midnight = LocalDateTime.of(date, LocalTime.MIDNIGHT);
+        return midnight.atZone(ZoneId.of("UTC")).toInstant();
+    }
+
+    private JsonArray jsonParsingToValues(JsonObject jsonObject) throws MySenderException {
+        JsonArray includedArray = jsonObject.getAsJsonArray("included");
+        if (includedArray != null && !includedArray.isEmpty()) {
+            JsonObject pvpcObject = includedArray.get(0).getAsJsonObject();
+
+            JsonObject attributesObject = pvpcObject.getAsJsonObject("attributes");
+            if (attributesObject != null) {
+                return attributesObject.getAsJsonArray("values");
+                /*
+                if (valuesArray != null) {
+                    // Iterar a través de la lista de "values"
+                    for (JsonElement valueElement : valuesArray) {
+                        // Operar con cada elemento de "values"
+                        double valor = valueElement.getAsJsonObject().get("value").getAsDouble();
+                        String datetime = valueElement.getAsJsonObject().get("datetime").getAsString();
+
+                        // Hacer algo con los valores (por ejemplo, imprimirlos)
+                        System.out.println("Valor: " + valor + ", DateTime: " + datetime);
+                    }
+                }
+
+                 */
+            }
+        }
+        throw new MySenderException("An error occurred while parsing.");
     }
 }

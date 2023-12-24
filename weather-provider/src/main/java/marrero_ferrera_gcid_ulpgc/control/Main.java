@@ -11,11 +11,11 @@ public class Main {
             System.out.println("(You can optionally introduce a NAME for your location as 5th argument).");
             System.exit(1);
         }
-        String ubiName = (args.length > 4) ? args[0] : "My Home";
         String apiKey = args[0];
         String topicName = args[1];
         float latitude = Float.parseFloat(args[2]);
         float longitude = Float.parseFloat(args[3]);
+        String ubiName = (args.length > 4) ? args[4] : "My Home";
 
         Location location = new Location(latitude, longitude, ubiName);
         System.out.println("Task started and scheduled... \n(Ignore errors)");
