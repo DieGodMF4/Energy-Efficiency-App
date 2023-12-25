@@ -42,12 +42,12 @@ public class WeatherController {
 
     public record DataContainer(String ss, long ts, long predTime, Weather weather, Location location) {
     }
-}
 
-class InstantSerializer implements JsonSerializer<Instant> {
-    @Override
-    public JsonElement serialize(Instant instant, Type typeOfSrc, JsonSerializationContext context) {
-        return new JsonPrimitive(instant.toString());
+    static class InstantSerializer implements JsonSerializer<Instant> {
+        @Override
+        public JsonElement serialize(Instant instant, Type typeOfSrc, JsonSerializationContext context) {
+            return new JsonPrimitive(instant.toString());
+        }
     }
 }
 

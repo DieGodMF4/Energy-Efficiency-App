@@ -12,6 +12,7 @@ import org.apache.http.util.EntityUtils;
 import java.io.IOException;
 import java.time.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ElectricEnergySupplier implements PriceSupplier {
     public ElectricEnergySupplier() {}
@@ -39,24 +40,34 @@ public class ElectricEnergySupplier implements PriceSupplier {
         }
     }
 
-    private void classifyPrices(ArrayList<EnergyPrice> prices) {
-        double minPrice = prices.stream().mapToDouble(EnergyPrice::getPrice).min().orElse(0.0);
-        double maxPrice = prices.stream().mapToDouble(EnergyPrice::getPrice).max().orElse(0.0);
+    private void classifyPrices(List<EnergyPrice> originalPrices) {
+        List<EnergyPrice> prices = new ArrayList<>(originalPrices);
+        prices.sort((p1, p2) -> Float.compare(p1.getPrice(), p2.getPrice()));
 
-        double lowThreshold = minPrice + (maxPrice - minPrice) / 3;
-        double highThreshold = minPrice + 2 * (maxPrice - minPrice) / 3;
+        int totalPrices = prices.size();
+        int lowEnd = 8;
+        int midStart = totalPrices / 3;
+        int midEnd = midStart + 8;
 
+        for (int i = 0; i < totalPrices; i++) {
+            EnergyPrice currentPrice = prices.get(i);
+            State state;
 
-        for (EnergyPrice price : prices) {
-            double priceValue = price.getPrice();
-
-            if (priceValue <= lowThreshold) {
-                price.setState(State.Valley);
-            } else if (priceValue <= highThreshold) {
-                price.setState(State.Flat);
+            if (i < lowEnd) {
+                state = State.Valley;
+                currentPrice.setState(state);
+            } else if (i < midEnd) {
+                state = State.Flat;
+                currentPrice.setState(state);
             } else {
-                price.setState(State.Peak);
+                state = State.Peak;
+                currentPrice.setState(state);
             }
+
+            originalPrices.stream()
+                    .filter(price -> price.getPrice() == currentPrice.getPrice())
+                    .findFirst()
+                    .ifPresent(price -> price.setState(state));
         }
     }
 

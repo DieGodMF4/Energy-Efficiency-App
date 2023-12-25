@@ -1,20 +1,16 @@
 package marrero_ferrera_gcid_ulpgc.control;
 
-import marrero_ferrera_gcid_ulpgc.model.EnergyPrice;
-
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.Timer;
 
 public class Main {
-    public static void main(String[] args) throws MySenderException {
-        ElectricEnergySupplier supplier = new ElectricEnergySupplier();
-        ArrayList<EnergyPrice> prices = supplier.getPriceForToday();
-        System.out.println(prices.size());
-        List<EnergyPrice> sortedPrices = prices.stream()
-                .sorted(Comparator.comparingDouble(EnergyPrice::getPrice)).toList();
-        for (EnergyPrice price : sortedPrices) {
-            System.out.println(price.getPrice() + price.getState().toString());
-        }
+    public static void main(String[] args)  {
+        String topicName = (args.length > 0) ? args[0] : "energy.MarketPrices";
+
+        Timer timer = new Timer();
+        short delay = 0;
+        long period = 24 * 60 * 60 * 1000;
+        System.out.println("Task started and scheduled... \n(Ignore errors)");
+
+        timer.scheduleAtFixedRate(new Task(topicName), delay, period);
     }
 }

@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08c0914d-b1b9-4648-a6ac-be09ae099e33" name="Changes" comment="ElectricEnergySupplier finished.">
+    <list default="true" id="08c0914d-b1b9-4648-a6ac-be09ae099e33" name="Changes" comment="ElectricEnergySupplier finished. Controller in develop.">
+      <change afterPath="$PROJECT_DIR$/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/Task.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/ElectricEnergySupplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/ElectricEnergySupplier.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/EnergyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/EnergyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/model/EnergyPrice.java" beforeDir="false" afterPath="$PROJECT_DIR$/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/model/EnergyPrice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/model/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/model/State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/MySenderException.java" beforeDir="false" afterPath="$PROJECT_DIR$/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/MySenderException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/WeatherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/WeatherController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,21 +40,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/dmarr/IdeaProjects/final_project",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "project.propCompiler",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/dmarr/IdeaProjects/final_project&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propCompiler&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="marrero_ferrera_gcid_ulpgc.control" />
@@ -62,7 +64,7 @@
       <recent name="C:\Users\dmarr\Documents\DACD" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main (2)">
     <configuration name="JsonTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="JsonTest" />
       <module name="event-store-builder" />
@@ -74,6 +76,19 @@
       <option name="MAIN_CLASS_NAME" value="marrero_ferrera_gcid_ulpgc.control.Main" />
       <module name="event-store-builder" />
       <option name="PROGRAM_PARAMETERS" value="prediction.Weather Diego $PROJECT_DIR$/datalake/eventstore/" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="marrero_ferrera_gcid_ulpgc.control.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="marrero_ferrera_gcid_ulpgc.control.Main" />
+      <module name="energy-provider" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="marrero_ferrera_gcid_ulpgc.control.*" />
@@ -100,6 +115,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main (2)" />
         <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.JsonTest" />
       </list>
@@ -114,7 +130,8 @@
       <option name="presentableId" value="Default" />
       <updated>1703344258743</updated>
       <workItem from="1703344262300" duration="11370000" />
-      <workItem from="1703513327228" duration="9260000" />
+      <workItem from="1703513327228" duration="9292000" />
+      <workItem from="1703535922000" duration="2916000" />
     </task>
     <task id="LOCAL-00001" summary="Commit Re-Adjustment">
       <option name="closed" value="true" />
@@ -140,7 +157,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703525747089</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="ElectricEnergySupplier finished. Controller in develop.">
+      <option name="closed" value="true" />
+      <created>1703529712210</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1703529712210</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,7 +175,8 @@
     <MESSAGE value="Commit Re-Adjustment" />
     <MESSAGE value="Energy Price supplier prototype" />
     <MESSAGE value="ElectricEnergySupplier finished." />
-    <option name="LAST_COMMIT_MESSAGE" value="ElectricEnergySupplier finished." />
+    <MESSAGE value="ElectricEnergySupplier finished. Controller in develop." />
+    <option name="LAST_COMMIT_MESSAGE" value="ElectricEnergySupplier finished. Controller in develop." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -167,7 +193,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java</url>
-          <line>10</line>
+          <line>11</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
@@ -181,21 +207,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/ElectricEnergySupplier.java</url>
-          <line>19</line>
+          <line>22</line>
           <properties class="marrero_ferrera_gcid_ulpgc.control.ElectricEnergySupplier" method="getPriceForToday">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/ElectricEnergySupplier.java</url>
-          <line>41</line>
-          <properties class="marrero_ferrera_gcid_ulpgc.control.ElectricEnergySupplier" method="classifyPrices">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
