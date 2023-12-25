@@ -4,7 +4,4 @@ public class MySenderException extends Throwable {
     public MySenderException(String message) {
         super(message);
     }
-    public MySenderException(MySenderException message) {
-        super(message);
-    }
 }
