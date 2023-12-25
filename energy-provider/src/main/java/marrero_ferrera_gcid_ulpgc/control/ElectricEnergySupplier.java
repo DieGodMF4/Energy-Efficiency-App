@@ -15,7 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ElectricEnergySupplier implements PriceSupplier {
-    public ElectricEnergySupplier() {}
+    public ElectricEnergySupplier() {
+    }
 
     @Override
     public ArrayList<EnergyPrice> getPriceForToday() throws MySenderException {

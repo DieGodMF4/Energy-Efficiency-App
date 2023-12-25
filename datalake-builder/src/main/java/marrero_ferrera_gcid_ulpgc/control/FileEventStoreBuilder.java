@@ -39,7 +39,6 @@ public class FileEventStoreBuilder implements EventStoreBuilder {
         String date = extractDate(jsonNode);
 
         String directoryPath = basePath + topicName + "/" + source + "/";
-        System.out.println(directoryPath);
         String fileName = date + ".events";
         String fullPath = Paths.get(directoryPath, fileName).toString();
 

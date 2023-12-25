@@ -1,4 +1,5 @@
 package marrero_ferrera_gcid_ulpgc.control;
+
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
@@ -23,7 +24,7 @@ public record JMSPriceStore(String topicName) implements PriceStore {
         }
     }
 
-    private static Connection buildConnection () throws JMSException {
+    private static Connection buildConnection() throws JMSException {
         ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(url);
         Connection connection = connectionFactory.createConnection();
         connection.start();

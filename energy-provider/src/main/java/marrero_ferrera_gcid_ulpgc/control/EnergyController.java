@@ -9,7 +9,9 @@ import java.util.ArrayList;
 
 public class EnergyController {
 
-    public EnergyController(){}
+    public EnergyController() {
+    }
+
     public void getAndPublishEnergyPrices(String topicName) throws MySenderException {
         ElectricEnergySupplier supplier = new ElectricEnergySupplier();
         ArrayList<EnergyPrice> energyPrices = supplier.getPriceForToday();
@@ -21,13 +23,14 @@ public class EnergyController {
                     .registerTypeAdapter(Instant.class, new InstantSerializer())
                     .create();
             String dataContainerToJson = gson.toJson(dataContainer);
-            System.out.println(dataContainerToJson);
             JMSPriceStore store = new JMSPriceStore(topicName);
             store.insertPrice(dataContainerToJson);
         }
     }
+
     public record DataContainer(String ss, long ts, long takeTime, EnergyPrice energyPrice) {
     }
+
     static class InstantSerializer implements JsonSerializer<Instant> {
         @Override
         public JsonElement serialize(Instant instant, Type typeOfSrc, JsonSerializationContext context) {
