@@ -27,7 +27,7 @@ public class ElectricEnergySupplier implements PriceSupplier {
                 for (JsonElement valueElement : valuesArray) {
                     EnergyPrice price = new EnergyPrice();
                     price.setPrice(valueElement.getAsJsonObject().get("value").getAsFloat());
-                    price.setTs(valueElement.getAsJsonObject().get("datetime").getAsString());
+                    price.setTs(Instant.parse(valueElement.getAsJsonObject().get("datetime").getAsString()));
                     prices.add(price);
                 }
                 classifyPrices(prices);
