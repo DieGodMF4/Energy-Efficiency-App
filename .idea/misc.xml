@@ -5,14 +5,15 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$USER_HOME$/IdeaProjects/Practice_2/event-store-builder/pom.xml" />
-        <option value="$USER_HOME$/IdeaProjects/Practice_2/prediction-provider/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_2/event-store-builder/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_2/prediction-provider/pom.xml" />
         <option value="$PROJECT_DIR$/event-store-builder/pom.xml" />
+        <option value="$PROJECT_DIR$/energy-provider/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
-        <option value="$USER_HOME$/IdeaProjects/Practice_2/prediction-provider/pom.xml" />
+        <option value="$PROJECT_DIR$/../Practice_2/prediction-provider/pom.xml" />
       </set>
     </option>
   </component>

@@ -25,17 +25,38 @@ public class ElectricEnergySupplier implements PriceSupplier {
 
             if (valuesArray != null) {
                 for (JsonElement valueElement : valuesArray) {
-                    float value = valueElement.getAsJsonObject().get("value").getAsFloat();
-                    String datetime = valueElement.getAsJsonObject().get("datetime").getAsString();
-
-                    prices.add(new EnergyPrice(value, datetime, getStateOfPrice()));
-                    System.out.println("Valor: " + value + ", DateTime: " + datetime);
+                    EnergyPrice price = new EnergyPrice();
+                    price.setPrice(valueElement.getAsJsonObject().get("value").getAsFloat());
+                    price.setTs(valueElement.getAsJsonObject().get("datetime").getAsString());
+                    prices.add(price);
                 }
-                return
+                classifyPrices(prices);
+                return prices;
             }
             throw new MySenderException("Location or time were incorrect!");
         } catch (Exception e) {
             throw new JsonParseException(e);
+        }
+    }
+
+    private void classifyPrices(ArrayList<EnergyPrice> prices) {
+        double minPrice = prices.stream().mapToDouble(EnergyPrice::getPrice).min().orElse(0.0);
+        double maxPrice = prices.stream().mapToDouble(EnergyPrice::getPrice).max().orElse(0.0);
+
+        double lowThreshold = minPrice + (maxPrice - minPrice) / 3;
+        double highThreshold = minPrice + 2 * (maxPrice - minPrice) / 3;
+
+
+        for (EnergyPrice price : prices) {
+            double priceValue = price.getPrice();
+
+            if (priceValue <= lowThreshold) {
+                price.setState(State.Valley);
+            } else if (priceValue <= highThreshold) {
+                price.setState(State.Flat);
+            } else {
+                price.setState(State.Peak);
+            }
         }
     }
 
@@ -58,7 +79,7 @@ public class ElectricEnergySupplier implements PriceSupplier {
 
     private Instant obtainInstantMidNight(LocalDate date) {
         LocalDateTime midnight = LocalDateTime.of(date, LocalTime.MIDNIGHT);
-        return midnight.atZone(ZoneId.of("UTC")).toInstant();
+        return midnight.atZone(ZoneId.of("Europe/Madrid")).toInstant();
     }
 
     private JsonArray jsonParsingToValues(JsonObject jsonObject) throws MySenderException {
@@ -69,20 +90,6 @@ public class ElectricEnergySupplier implements PriceSupplier {
             JsonObject attributesObject = pvpcObject.getAsJsonObject("attributes");
             if (attributesObject != null) {
                 return attributesObject.getAsJsonArray("values");
-                /*
-                if (valuesArray != null) {
-                    // Iterar a través de la lista de "values"
-                    for (JsonElement valueElement : valuesArray) {
-                        // Operar con cada elemento de "values"
-                        double valor = valueElement.getAsJsonObject().get("value").getAsDouble();
-                        String datetime = valueElement.getAsJsonObject().get("datetime").getAsString();
-
-                        // Hacer algo con los valores (por ejemplo, imprimirlos)
-                        System.out.println("Valor: " + valor + ", DateTime: " + datetime);
-                    }
-                }
-
-                 */
             }
         }
         throw new MySenderException("An error occurred while parsing.");
