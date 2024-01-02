@@ -12,6 +12,7 @@
         <module>weather-provider</module>
         <module>energy-provider</module>
         <module>datalake-builder</module>
+        <module>business-unit</module>
     </modules>
 
     <properties>
