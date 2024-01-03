@@ -10,10 +10,6 @@
     </parent>
 
     <artifactId>datalake-builder</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>business-unit</module>
-    </modules>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -27,6 +23,6 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.15.1</version>
         </dependency>
-
     </dependencies>
+
 </project>

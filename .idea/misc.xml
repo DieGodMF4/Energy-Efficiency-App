@@ -14,6 +14,9 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/../Practice_2/prediction-provider/pom.xml" />
+        <option value="$PROJECT_DIR$/business-unit/pom.xml" />
+        <option value="$PROJECT_DIR$/datalake-builder-delete/pom.xml" />
+        <option value="$PROJECT_DIR$/datalake-builder/business-unit/pom.xml" />
       </set>
     </option>
   </component>
