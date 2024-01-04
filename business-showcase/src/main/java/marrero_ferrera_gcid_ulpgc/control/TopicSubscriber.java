@@ -10,24 +10,22 @@ public final class TopicSubscriber implements Subscriber {
     private static final String url = ActiveMQConnection.DEFAULT_BROKER_URL;
     private final String topicName;
     private final String clientID;
-    private final String basePath;
 
-    public TopicSubscriber(String topicName, String clientID, String basePath) {
+    public TopicSubscriber(String topicName, String clientID) {
         this.topicName = topicName;
         this.clientID = clientID;
-        this.basePath = basePath;
     }
 
     @Override
-    public void receiveMessage() throws MyReceiverException {
-        FileEventStoreBuilder storeBuilder = new FileEventStoreBuilder(basePath, topicName);
+    public void receiveMessage() throws MyManagerException {
         try {
             MessageConsumer consumer = buildConnectionAndTopic();
             CountDownLatch latch = new CountDownLatch(1);
             consumer.setMessageListener(message -> {
                 try {
-                    storeBuilder.storeMessage(((TextMessage) message).getText());
-                } catch (JMSException | MyReceiverException e) {
+                    System.out.println(((TextMessage) message).getText());
+                    // storeBuilder.storeMessage(((TextMessage) message).getText());
+                } catch (JMSException e) {
                     throw new RuntimeException(e);
                 } finally {
                     latch.countDown();
@@ -36,7 +34,7 @@ public final class TopicSubscriber implements Subscriber {
             System.out.println("Running...");
 
         } catch (JMSException e) {
-            throw new MyReceiverException("Error receiving message from ActiveMQ", e);
+            throw new MyManagerException("Error receiving message from ActiveMQ", e);
         }
     }
 
