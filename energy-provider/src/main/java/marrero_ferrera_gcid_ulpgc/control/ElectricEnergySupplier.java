@@ -2,7 +2,6 @@ package marrero_ferrera_gcid_ulpgc.control;
 
 import com.google.gson.*;
 import marrero_ferrera_gcid_ulpgc.model.EnergyPrice;
-import marrero_ferrera_gcid_ulpgc.model.State;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -29,7 +28,7 @@ public class ElectricEnergySupplier implements PriceSupplier {
                 for (JsonElement valueElement : valuesArray) {
                     EnergyPrice price = new EnergyPrice();
                     price.setPrice(valueElement.getAsJsonObject().get("value").getAsFloat());
-                    price.setTs(Instant.parse(valueElement.getAsJsonObject().get("datetime").getAsString()));
+                    price.setPredictionTime(Instant.parse(valueElement.getAsJsonObject().get("datetime").getAsString()));
                     prices.add(price);
                 }
                 classifyPrices(prices);
@@ -52,23 +51,23 @@ public class ElectricEnergySupplier implements PriceSupplier {
 
         for (int i = 0; i < totalPrices; i++) {
             EnergyPrice currentPrice = prices.get(i);
-            State state;
+            EnergyPrice.Slot state;
 
             if (i < lowEnd) {
-                state = State.Valley;
-                currentPrice.setState(state);
+                state = EnergyPrice.Slot.Valley;
+                currentPrice.setSlot(state);
             } else if (i < midEnd) {
-                state = State.Flat;
-                currentPrice.setState(state);
+                state = EnergyPrice.Slot.Flat;
+                currentPrice.setSlot(state);
             } else {
-                state = State.Peak;
-                currentPrice.setState(state);
+                state = EnergyPrice.Slot.Peak;
+                currentPrice.setSlot(state);
             }
 
             originalPrices.stream()
                     .filter(price -> price.getPrice() == currentPrice.getPrice())
                     .findFirst()
-                    .ifPresent(price -> price.setState(state));
+                    .ifPresent(price -> price.setSlot(state));
         }
     }
 

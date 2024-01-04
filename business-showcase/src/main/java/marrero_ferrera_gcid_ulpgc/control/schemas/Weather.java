@@ -1,4 +1,4 @@
-package marrero_ferrera_gcid_ulpgc.model;
+package marrero_ferrera_gcid_ulpgc.control.schemas;
 
 import java.time.Instant;
 
@@ -6,7 +6,6 @@ public class Weather {
     private final Instant ts;
     private final Instant predictionTime;
     private final String weatherType;
-    private final String ss;
     private final int clouds;
     private final float temperature;
     private final float rain;
@@ -17,7 +16,6 @@ public class Weather {
     public Weather(Instant predictionTime, String weatherType, int clouds, float temperature, float humidity, Location location, float rain, float wind) {
         this.predictionTime = predictionTime;
         this.weatherType = weatherType;
-        this.ss = "WeatherProvider";
         this.clouds = clouds;
         this.temperature = temperature;
         this.humidity = humidity;
@@ -28,7 +26,7 @@ public class Weather {
     }
 
     public String getSs() {
-        return ss;
+        return "WeatherProvider";
     }
 
     public Instant getTs() {
@@ -63,10 +61,23 @@ public class Weather {
         return location;
     }
 
-    public Instant getPredictionTime() {
-        return predictionTime;
-    }
+    public static class Location {
+        private final float latitude;
+        private final float longitude;
+        private final String name;
 
-    public record Location(float latitude, float longitude, String name) {
+        public Location(float latitude, float longitude, String name) {
+            this.latitude = latitude;
+            this.longitude = longitude;
+            this.name = name;
+        }
+
+        public float getLatitude() {
+            return latitude;
+        }
+
+        public float getLongitude() {
+            return longitude;
+        }
     }
 }

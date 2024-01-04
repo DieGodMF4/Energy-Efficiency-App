@@ -1,53 +1,37 @@
 package marrero_ferrera_gcid_ulpgc.control;
 
-import com.google.gson.*;
-import marrero_ferrera_gcid_ulpgc.model.Location;
 import marrero_ferrera_gcid_ulpgc.model.Weather;
 
-import java.lang.reflect.Type;
-import java.time.Clock;
 import java.time.Instant;
-import java.util.ArrayList;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 public class WeatherController {
-    private final ArrayList<Weather> weathers;
 
-    public WeatherController() {
-        weathers = new ArrayList<>();
+    private final WeatherSupplier supplier;
+    private final WeatherStore store;
+    private final Weather.Location location;
+
+    public WeatherController(WeatherSupplier supplier, WeatherStore store, Weather.Location location) {
+        this.supplier = supplier;
+        this.store = store;
+        this.location = location;
     }
 
-    public void getAndPublishWeatherData(Location location, String apiKey, String topicName, Instant instant) {
-        OpenWeatherMapSupplier supplier = new OpenWeatherMapSupplier(apiKey);
-        Weather weather = supplier.getWeather(location, instant);
-
-        addWeather(weather);
-        long nowUtc = Instant.now(Clock.systemUTC()).getEpochSecond();
-        DataContainer dataContainer = new DataContainer(weather.getSs(), nowUtc, weather.getTs(), weather, location);
-
-        Gson gson = new GsonBuilder()
-                .registerTypeAdapter(Instant.class, new InstantSerializer())
-                .create();
-        String dataContainerToJson = gson.toJson(dataContainer);
-        JMSWeatherStore store = new JMSWeatherStore(topicName);
-        store.insertWeather(dataContainerToJson);
-    }
-
-    public void addWeather(Weather weather) {
-        if (!weathers.contains(weather)) {
-            weathers.add(weather);
-        } else {
-            System.out.println("That weather is already in the list!");
+    public void execute() {
+        for (int i = 0; i < 5; i++) {
+            Weather weather = supplier.getWeather(location, calculateInstant(i));
+            store.insertWeather(weather);
         }
     }
 
-    public record DataContainer(String ss, long ts, long predTime, Weather weather, Location location) {
+    private static Instant calculateInstant(int i) {
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime scheduledTime = now.withHour(12).withMinute(0).withSecond(0).withNano(0);
+        if (now.isAfter(scheduledTime)) scheduledTime = scheduledTime.plusDays(1);
+        LocalDateTime nextExecutionTime = scheduledTime.plusDays(i);
+        return nextExecutionTime.atZone(ZoneId.systemDefault()).toInstant();
     }
 
-    static class InstantSerializer implements JsonSerializer<Instant> {
-        @Override
-        public JsonElement serialize(Instant instant, Type typeOfSrc, JsonSerializationContext context) {
-            return new JsonPrimitive(instant.toString());
-        }
-    }
 }
 

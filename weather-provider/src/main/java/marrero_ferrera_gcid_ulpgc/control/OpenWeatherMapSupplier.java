@@ -3,7 +3,6 @@ package marrero_ferrera_gcid_ulpgc.control;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import marrero_ferrera_gcid_ulpgc.model.Location;
 import marrero_ferrera_gcid_ulpgc.model.Weather;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -22,8 +21,8 @@ public class OpenWeatherMapSupplier implements WeatherSupplier {
     }
 
     @Override
-    public Weather getWeather(Location location, Instant ts) {
-        long unixTimestamp = ts.getEpochSecond();
+    public Weather getWeather(Weather.Location location, Instant predictionTime) {
+        long unixTimestamp = predictionTime.getEpochSecond();
         try {
             JsonObject jsonObject = apiConnector(location);
 
@@ -43,7 +42,7 @@ public class OpenWeatherMapSupplier implements WeatherSupplier {
                     float rain = currentListObject.get("pop").getAsFloat();
                     float wind = currentListObject.getAsJsonObject("wind")
                             .get("speed").getAsFloat();
-                    return new Weather(weatherType, cloud, temperature, humidity, location, ts, rain, wind);
+                    return new Weather(predictionTime, weatherType, cloud, temperature, humidity, location, rain, wind);
                 }
             }
             throw new MySenderException("Location or time were incorrect!");
@@ -52,10 +51,10 @@ public class OpenWeatherMapSupplier implements WeatherSupplier {
         }
     }
 
-    private JsonObject apiConnector(Location location) {
+    private JsonObject apiConnector(Weather.Location location) {
         HttpClient httpClient = HttpClients.createDefault();
-        String httpUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + location.getLatitude() +
-                "&lon=" + location.getLongitude() + "&units=metric&appid=" + apiKey;
+        String httpUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + location.latitude() +
+                "&lon=" + location.longitude() + "&units=metric&appid=" + apiKey;
         HttpGet httpGet = new HttpGet(httpUrl);
 
         try {

@@ -23,10 +23,10 @@ public final class TopicSubscriber implements Subscriber {
         FileEventStoreBuilder storeBuilder = new FileEventStoreBuilder(basePath, topicName);
         try {
             MessageConsumer consumer = buildConnectionAndTopic();
-
             CountDownLatch latch = new CountDownLatch(1);
             consumer.setMessageListener(message -> {
                 try {
+                    System.out.println(((TextMessage) message).getText());
                     storeBuilder.storeMessage(((TextMessage) message).getText());
                 } catch (JMSException | MyReceiverException e) {
                     throw new RuntimeException(e);

@@ -1,21 +1,24 @@
 package marrero_ferrera_gcid_ulpgc.control;
+import com.google.gson.*;
+import marrero_ferrera_gcid_ulpgc.model.Weather;
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
+import java.lang.reflect.Type;
+import java.time.Instant;
 
-public record JMSWeatherStore(String topicName) implements WeatherStore {
-    private static final String url = ActiveMQConnection.DEFAULT_BROKER_URL;
+public record JMSWeatherStore(String url, String topicName) implements WeatherStore {
 
     @Override
-    public void insertWeather(String jsonDataContainer) {
+    public void insertWeather(Weather weather) {
         try {
             Connection connection = buildConnection();
             Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
             Topic topic = session.createTopic(topicName);
             MessageProducer producer = session.createProducer(topic);
 
-            TextMessage message = session.createTextMessage(jsonDataContainer);
+            TextMessage message = session.createTextMessage(toJson(weather));
             producer.send(message);
             connection.close();
         } catch (JMSException e) {
@@ -23,10 +26,24 @@ public record JMSWeatherStore(String topicName) implements WeatherStore {
         }
     }
 
-    private static Connection buildConnection () throws JMSException {
+    private String toJson(Weather weather) {
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Instant.class, new InstantSerializer())
+                .create();
+        return gson.toJson(weather);
+    }
+
+    private Connection buildConnection () throws JMSException {
         ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(url);
         Connection connection = connectionFactory.createConnection();
         connection.start();
         return connection;
+    }
+
+    static class InstantSerializer implements JsonSerializer<Instant> {
+        @Override
+        public JsonElement serialize(Instant instant, Type typeOfSrc, JsonSerializationContext context) {
+            return new JsonPrimitive(instant.toString());
+        }
     }
 }
