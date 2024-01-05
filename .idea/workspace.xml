@@ -4,16 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08c0914d-b1b9-4648-a6ac-be09ae099e33" name="Changes" comment="View - Main first inputs made.">
+    <list default="true" id="08c0914d-b1b9-4648-a6ac-be09ae099e33" name="Changes" comment="Fix in subscriber. First implementations on DataLakeFetcher (BU)">
+      <change afterPath="$PROJECT_DIR$/business-showcase/src/test/java/Tests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/BusinessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/BusinessController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/DataLakeFetcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/DataLakeFetcher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/Fetcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/Fetcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/schemas/Weather.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/schemas/Weather.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/model/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/view/ViewFirst.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/view/ViewFirst.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datalake-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/datalake-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datalake-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/FileEventStoreBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/datalake-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/FileEventStoreBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datalake-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/TopicSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/datalake-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/TopicSubscriber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/ElectricEnergySupplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/ElectricEnergySupplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/EnergyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/EnergyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/JMSPriceStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/JMSPriceStore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/JMSWeatherStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/JMSWeatherStore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/OpenWeatherMapSupplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/OpenWeatherMapSupplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/WeatherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/WeatherController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/WeatherStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/WeatherStore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/WeatherSupplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/WeatherSupplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/model/Weather.java" beforeDir="false" afterPath="$PROJECT_DIR$/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/model/Weather.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +33,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -83,8 +93,9 @@
       <recent name="C:\Users\dmarr\Documents\DACD" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="marrero_ferrera_gcid_ulpgc.control" />
+      <recent name="marrero_ferrera_gcid_ulpgc.model" />
       <recent name="marrero_ferrera_gcid_ulpgc.control.schemas" />
+      <recent name="marrero_ferrera_gcid_ulpgc.control" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Main (2)">
@@ -111,7 +122,6 @@
     <configuration name="Main (2)" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="marrero_ferrera_gcid_ulpgc.control.Main" />
       <module name="datalake-builder" />
-      <option name="PROGRAM_PARAMETERS" value="energy.MarketPrices" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="marrero_ferrera_gcid_ulpgc.control.*" />
@@ -190,6 +200,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Tests" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Tests" />
+      <module name="business-showcase" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ViewFirst" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="marrero_ferrera_gcid_ulpgc.view.ViewFirst" />
       <module name="business-showcase" />
@@ -206,6 +223,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Tests" />
         <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.ViewFirst" />
         <item itemvalue="Application.MainView" />
@@ -230,7 +248,8 @@
       <workItem from="1704277029679" duration="17335000" />
       <workItem from="1704375083626" duration="9302000" />
       <workItem from="1704413957458" duration="4453000" />
-      <workItem from="1704469442189" duration="5624000" />
+      <workItem from="1704469442189" duration="5735000" />
+      <workItem from="1704484118614" duration="9902000" />
     </task>
     <task id="LOCAL-00001" summary="Commit Re-Adjustment">
       <option name="closed" value="true" />
@@ -328,7 +347,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704420261587</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Fix in subscriber. First implementations on DataLakeFetcher (BU)">
+      <option name="closed" value="true" />
+      <created>1704475609600</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1704475609600</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -355,7 +382,8 @@
     <MESSAGE value="module BU created" />
     <MESSAGE value="BIG ARRANGEMENT PROVIDER MODULES" />
     <MESSAGE value="View - Main first inputs made." />
-    <option name="LAST_COMMIT_MESSAGE" value="View - Main first inputs made." />
+    <MESSAGE value="Fix in subscriber. First implementations on DataLakeFetcher (BU)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix in subscriber. First implementations on DataLakeFetcher (BU)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

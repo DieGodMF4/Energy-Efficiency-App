@@ -6,4 +6,6 @@ public class BusinessController {
     public void execute() {
 
     }
+
+    private void parseJson(String json){}
 }

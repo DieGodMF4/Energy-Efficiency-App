@@ -12,6 +12,10 @@ import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 public class OpenWeatherMapSupplier implements WeatherSupplier {
     private final String apiKey;
@@ -21,16 +25,13 @@ public class OpenWeatherMapSupplier implements WeatherSupplier {
     }
 
     @Override
-    public Weather getWeather(Weather.Location location, Instant predictionTime) {
-        long unixTimestamp = predictionTime.getEpochSecond();
+    public ArrayList<Weather> getWeather(Weather.Location location, Instant predictionTime) {
+        ArrayList<Weather> weathers = new ArrayList<>();
         try {
             JsonObject jsonObject = apiConnector(location);
-
             int listSize = jsonObject.getAsJsonArray("list").size();
-
             for (int i = 0; i < listSize; i++) {
                 JsonObject currentListObject = jsonObject.getAsJsonArray("list").get(i).getAsJsonObject();
-                if (currentListObject.get("dt").getAsLong() == unixTimestamp) {
                     float temperature = currentListObject.getAsJsonObject("main")
                             .get("temp").getAsFloat();
                     String weatherType = currentListObject.getAsJsonArray("weather")
@@ -40,15 +41,22 @@ public class OpenWeatherMapSupplier implements WeatherSupplier {
                     float humidity = currentListObject.getAsJsonObject("main")
                             .get("humidity").getAsFloat();
                     float rain = currentListObject.get("pop").getAsFloat();
+                    Instant ts = dateToInstant(currentListObject.get("dt_txt").getAsString());
                     float wind = currentListObject.getAsJsonObject("wind")
                             .get("speed").getAsFloat();
-                    return new Weather(predictionTime, weatherType, cloud, temperature, humidity, location, rain, wind);
-                }
+                    weathers.add(new Weather(ts, weatherType, cloud, temperature, humidity, location, rain, wind));
             }
-            throw new MySenderException("Location or time were incorrect!");
+            if (!(weathers.isEmpty())) return weathers;
+            else throw new MySenderException("Location or time were incorrect!");
         } catch (Exception e) {
             throw new JsonParseException(e);
         }
+    }
+
+    private Instant dateToInstant(String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime localDateTime = LocalDateTime.parse(date, formatter);
+        return localDateTime.toInstant(ZoneOffset.UTC);
     }
 
     private JsonObject apiConnector(Weather.Location location) {
@@ -56,7 +64,6 @@ public class OpenWeatherMapSupplier implements WeatherSupplier {
         String httpUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + location.latitude() +
                 "&lon=" + location.longitude() + "&units=metric&appid=" + apiKey;
         HttpGet httpGet = new HttpGet(httpUrl);
-
         try {
             HttpResponse response = httpClient.execute(httpGet);
 

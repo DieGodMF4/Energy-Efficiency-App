@@ -4,18 +4,20 @@ import java.time.Instant;
 
 public class Weather {
     private final Instant ts;
-    private final Instant predictionTime;
-    private final String weatherType;
-    private final int clouds;
-    private final float temperature;
-    private final float rain;
-    private final float humidity;
-    private final float wind;
-    private final Location location;
+    private final String ss;
+    private Instant predictionTime;
+    private String weatherType;
+    private int clouds;
+    private float temperature;
+    private float rain;
+    private float humidity;
+    private float wind;
+    private Location location;
 
     public Weather(Instant predictionTime, String weatherType, int clouds, float temperature, float humidity, Location location, float rain, float wind) {
         this.predictionTime = predictionTime;
         this.weatherType = weatherType;
+        this.ss = "WeatherProvider";
         this.clouds = clouds;
         this.temperature = temperature;
         this.humidity = humidity;
@@ -25,8 +27,53 @@ public class Weather {
         this.wind = wind;
     }
 
+    public Weather(){
+        this.ss = "WeatherProvider";
+        this.ts = Instant.now();
+    }
+
+    public Weather setPredictionTime(Instant predictionTime) {
+        this.predictionTime = predictionTime;
+        return this;
+    }
+
+    public Weather setWeatherType(String weatherType) {
+        this.weatherType = weatherType;
+        return this;
+    }
+
+    public Weather setClouds(int clouds) {
+        this.clouds = clouds;
+        return this;
+    }
+
+    public Weather setTemperature(float temperature) {
+        this.temperature = temperature;
+        return this;
+    }
+
+    public Weather setRain(float rain) {
+        this.rain = rain;
+        return this;
+    }
+
+    public Weather setHumidity(float humidity) {
+        this.humidity = humidity;
+        return this;
+    }
+
+    public Weather setWind(float wind) {
+        this.wind = wind;
+        return this;
+    }
+
+    public Weather setLocation(Location location) {
+        this.location = location;
+        return this;
+    }
+
     public String getSs() {
-        return "WeatherProvider";
+        return ss;
     }
 
     public Instant getTs() {
@@ -61,23 +108,10 @@ public class Weather {
         return location;
     }
 
-    public static class Location {
-        private final float latitude;
-        private final float longitude;
-        private final String name;
+    public Instant getPredictionTime() {
+        return predictionTime;
+    }
 
-        public Location(float latitude, float longitude, String name) {
-            this.latitude = latitude;
-            this.longitude = longitude;
-            this.name = name;
-        }
-
-        public float getLatitude() {
-            return latitude;
-        }
-
-        public float getLongitude() {
-            return longitude;
-        }
+    public record Location(float latitude, float longitude, String name) {
     }
 }

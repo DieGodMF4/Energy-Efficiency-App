@@ -63,7 +63,6 @@ public class ElectricEnergySupplier implements PriceSupplier {
                 state = EnergyPrice.Slot.Peak;
                 currentPrice.setSlot(state);
             }
-
             originalPrices.stream()
                     .filter(price -> price.getPrice() == currentPrice.getPrice())
                     .findFirst()
@@ -74,8 +73,8 @@ public class ElectricEnergySupplier implements PriceSupplier {
     private JsonObject apiConnector() {
         HttpClient httpClient = HttpClients.createDefault();
         String httpUrl = "https://apidatos.ree.es/es/datos/mercados/precios-mercados-tiempo-real?start_date=" +
-                obtainInstantMidNight(LocalDate.now()) + "&end_date=" +
-                obtainInstantMidNight(LocalDate.now().plusDays(1)) + "&time_trunc=hour";
+                obtainInstantMidNight(LocalDate.now().plusDays(1)) + "&end_date=" +
+                obtainInstantMidNight(LocalDate.now().plusDays(2)) + "&time_trunc=hour";
         HttpGet httpGet = new HttpGet(httpUrl);
 
         try {

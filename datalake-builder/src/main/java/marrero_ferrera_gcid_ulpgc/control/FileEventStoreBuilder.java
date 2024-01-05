@@ -30,7 +30,6 @@ public class FileEventStoreBuilder implements EventStoreBuilder {
     @Override
     public void storeMessage(String jsonString) throws MyReceiverException {
         JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
-
         String source = getSource(jsonObject);
         String date;
         try {

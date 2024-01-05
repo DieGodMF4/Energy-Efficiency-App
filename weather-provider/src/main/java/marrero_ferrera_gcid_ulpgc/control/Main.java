@@ -18,16 +18,12 @@ public class Main {
         float latitude = Float.parseFloat(args[3]);
         float longitude = Float.parseFloat(args[4]);
         String ubiName = (args.length > 5) ? args[5] : "My Home";
-
         Weather.Location location = new Weather.Location(latitude, longitude, ubiName);
         System.out.println("Task started and scheduled... \n(Ignore errors)");
-
         Timer timer = new Timer();
         short delay = 0;
         long period = 6 * 60 * 60 * 1000;
-
         WeatherController controller = new WeatherController(new OpenWeatherMapSupplier(apiKey), new JMSWeatherStore(url, topicName), location);
-
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {

@@ -1,10 +1,6 @@
 package marrero_ferrera_gcid_ulpgc.control;
 
-import com.google.gson.*;
 import marrero_ferrera_gcid_ulpgc.model.EnergyPrice;
-
-import java.lang.reflect.Type;
-import java.time.Instant;
 import java.util.ArrayList;
 
 public class EnergyController {

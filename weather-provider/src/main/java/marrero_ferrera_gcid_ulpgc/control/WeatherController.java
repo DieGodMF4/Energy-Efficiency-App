@@ -3,8 +3,7 @@ package marrero_ferrera_gcid_ulpgc.control;
 import marrero_ferrera_gcid_ulpgc.model.Weather;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.util.ArrayList;
 
 public class WeatherController {
 
@@ -19,19 +18,8 @@ public class WeatherController {
     }
 
     public void execute() {
-        for (int i = 0; i < 5; i++) {
-            Weather weather = supplier.getWeather(location, calculateInstant(i));
-            store.insertWeather(weather);
-        }
+        ArrayList<Weather> weathers = supplier.getWeather(location, Instant.now());
+        store.insertWeather(weathers);
     }
-
-    private static Instant calculateInstant(int i) {
-        LocalDateTime now = LocalDateTime.now();
-        LocalDateTime scheduledTime = now.withHour(12).withMinute(0).withSecond(0).withNano(0);
-        if (now.isAfter(scheduledTime)) scheduledTime = scheduledTime.plusDays(1);
-        LocalDateTime nextExecutionTime = scheduledTime.plusDays(i);
-        return nextExecutionTime.atZone(ZoneId.systemDefault()).toInstant();
-    }
-
 }
 

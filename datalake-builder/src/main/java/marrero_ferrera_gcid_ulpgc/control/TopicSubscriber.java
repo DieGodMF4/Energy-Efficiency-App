@@ -27,7 +27,6 @@ public final class TopicSubscriber implements Subscriber {
             CountDownLatch latch = new CountDownLatch(1);
             consumer.setMessageListener(message -> {
                 try {
-                    System.out.println(((TextMessage) message).getText());
                     storeBuilder.storeMessage(((TextMessage) message).getText());
                 } catch (JMSException | MyReceiverException e) {
                     throw new RuntimeException(e);
@@ -47,10 +46,8 @@ public final class TopicSubscriber implements Subscriber {
         Connection connection = connectionFactory.createConnection();
         connection.setClientID(clientID);
         connection.start();
-
         Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
         Topic topic = session.createTopic(topicName);
-
         return session.createDurableSubscriber(topic, clientID);
     }
 

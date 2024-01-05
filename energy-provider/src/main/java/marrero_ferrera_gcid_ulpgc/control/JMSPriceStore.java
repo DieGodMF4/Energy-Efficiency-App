@@ -2,7 +2,6 @@ package marrero_ferrera_gcid_ulpgc.control;
 
 import com.google.gson.*;
 import marrero_ferrera_gcid_ulpgc.model.EnergyPrice;
-import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
@@ -19,6 +18,7 @@ public record JMSPriceStore(String url, String topicName) implements PriceStore 
             Topic topic = session.createTopic(topicName);
             MessageProducer producer = session.createProducer(topic);
             TextMessage message = session.createTextMessage(toJson(energyPrice));
+            System.out.println(message.getText());
             producer.send(message);
             connection.close();
         } catch (JMSException e) {
