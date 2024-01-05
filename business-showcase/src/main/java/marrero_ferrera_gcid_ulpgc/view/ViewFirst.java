@@ -47,7 +47,6 @@ public class ViewFirst extends Application {
 
             new Thread(() -> Main.updateUserValues(url, topicNameWeather, topicNameEnergy, powerChargeSolar,
                     powerChargeWind, batteryCapacity, recommendedHalfBattery)).start();
-            showResultsWindow(url, topicNameWeather, topicNameEnergy, powerChargeSolar, powerChargeWind, recommendedHalfBattery);
         });
         submitButtonAdder(primaryStage, grid, submitButton);
     }
@@ -83,17 +82,6 @@ public class ViewFirst extends Application {
         grid.add(new Label("Your Battery Capacity:"), 0, 5);
         grid.add(batteryCapacityField, 1, 5);
         grid.add(recommendedHalfBatteryCheckbox, 0, 6, 2, 1);
-    }
-
-    private void showResultsWindow(String url, String topicNameWeather, String topicNameEnergy,
-                                   float powerChargeSolar, float powerChargeWind, boolean recommendedHalfBattery) {
-        Stage resultsStage = new Stage();
-        resultsStage.setTitle("Weather App Results");
-        GridPane grid = setGridPane();
-        extractedGridInfo(url, topicNameWeather, topicNameEnergy, powerChargeSolar, powerChargeWind, recommendedHalfBattery, grid);
-        Scene scene = new Scene(grid, 400, 200);
-        resultsStage.setScene(scene);
-        resultsStage.show();
     }
 
     private static void extractedGridInfo(String url, String topicNameWeather, String topicNameEnergy, float powerChargeSolar, float powerChargeWind, boolean recommendedHalfBattery, GridPane grid) {

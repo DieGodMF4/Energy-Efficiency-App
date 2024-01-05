@@ -5,11 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08c0914d-b1b9-4648-a6ac-be09ae099e33" name="Changes" comment="View - Main first inputs made.">
-      <change afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/DataLakeFetcher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/Fetcher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/BusinessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/BusinessController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/DataLakeFetcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/DataLakeFetcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/Fetcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/Fetcher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/view/ViewFirst.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/model/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/view/ViewFirst.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/view/ViewFirst.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datalake-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/datalake-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datalake-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/TopicSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/datalake-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/TopicSubscriber.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,10 +87,37 @@
       <recent name="marrero_ferrera_gcid_ulpgc.control.schemas" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main (1)">
+  <component name="RunManager" selected="Application.Main (2)">
     <configuration name="JsonTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="JsonTest" />
       <module name="datalake-builder-delete" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="marrero_ferrera_gcid_ulpgc.control.Main" />
+      <module name="energy-provider" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="marrero_ferrera_gcid_ulpgc.control.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (2)" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="marrero_ferrera_gcid_ulpgc.control.Main" />
+      <module name="datalake-builder" />
+      <option name="PROGRAM_PARAMETERS" value="energy.MarketPrices" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="marrero_ferrera_gcid_ulpgc.control.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -105,19 +136,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="marrero_ferrera_gcid_ulpgc.control.Main" />
-      <module name="business-showcase" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="marrero_ferrera_gcid_ulpgc.control.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MainView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="marrero_ferrera_gcid_ulpgc.view.MainView" />
       <module name="business-showcase" />
@@ -125,6 +143,19 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="marrero_ferrera_gcid_ulpgc.view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="marrero_ferrera_gcid_ulpgc.control.Main" />
+      <module name="business-showcase" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="marrero_ferrera_gcid_ulpgc.control.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -178,7 +209,6 @@
         <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.ViewFirst" />
         <item itemvalue="Application.MainView" />
-        <item itemvalue="Application.Main (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -199,7 +229,8 @@
       <workItem from="1704246308533" duration="640000" />
       <workItem from="1704277029679" duration="17335000" />
       <workItem from="1704375083626" duration="9302000" />
-      <workItem from="1704413957458" duration="3805000" />
+      <workItem from="1704413957458" duration="4453000" />
+      <workItem from="1704469442189" duration="5624000" />
     </task>
     <task id="LOCAL-00001" summary="Commit Re-Adjustment">
       <option name="closed" value="true" />
@@ -289,7 +320,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704390819485</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="View - Main first inputs made.">
+      <option name="closed" value="true" />
+      <created>1704420261587</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1704420261587</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -323,7 +362,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/datalake-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java</url>
-          <line>9</line>
+          <line>10</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -346,9 +385,14 @@
           <line>10</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/datalake-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/TopicSubscriber.java</url>
-          <line>21</line>
+          <line>22</line>
           <properties class="marrero_ferrera_gcid_ulpgc.control.TopicSubscriber" method="receiveMessage">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />

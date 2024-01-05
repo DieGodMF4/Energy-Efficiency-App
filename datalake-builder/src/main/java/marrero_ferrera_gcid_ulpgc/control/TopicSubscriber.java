@@ -7,12 +7,13 @@ import javax.jms.*;
 import java.util.concurrent.CountDownLatch;
 
 public final class TopicSubscriber implements Subscriber {
-    private static final String url = ActiveMQConnection.DEFAULT_BROKER_URL;
+    private final String url;
     private final String topicName;
     private final String clientID;
     private final String basePath;
 
-    public TopicSubscriber(String topicName, String clientID, String basePath) {
+    public TopicSubscriber(String url, String topicName, String clientID, String basePath) {
+        this.url = url;
         this.topicName = topicName;
         this.clientID = clientID;
         this.basePath = basePath;
@@ -26,6 +27,7 @@ public final class TopicSubscriber implements Subscriber {
             CountDownLatch latch = new CountDownLatch(1);
             consumer.setMessageListener(message -> {
                 try {
+                    System.out.println(((TextMessage) message).getText());
                     storeBuilder.storeMessage(((TextMessage) message).getText());
                 } catch (JMSException | MyReceiverException e) {
                     throw new RuntimeException(e);

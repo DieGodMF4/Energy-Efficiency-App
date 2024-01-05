@@ -8,7 +8,6 @@ public class Main {
         // Misma operación pero en la clase "ViewFinal" para mostrar los resultados tras las operaciones.
     }
 
-
     public static void updateUserValues(String url, String topicNameWeather, String topicNameEnergy, float powerChargeSolar,
                                         float powerChargeWind, float batteryCapacity, boolean recommendedHalfBattery) {
 
