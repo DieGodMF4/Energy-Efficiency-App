@@ -8,12 +8,13 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import marrero_ferrera_gcid_ulpgc.control.Main;
 
-public class View extends Application {
+public class ViewFirst extends Application {
     private static String url;
     private static String topicNameWeather;
     private static String topicNameEnergy;
     private static float powerChargeSolar;
     private static float powerChargeWind;
+    private static float batteryCapacity;
     private static boolean recommendedHalfBattery;
     public static void main(String[] args) {
         launch(args);
@@ -21,17 +22,18 @@ public class View extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("Weather App Settings");
+        primaryStage.setTitle("My Energy Inputs");
         GridPane grid = setGridPane();
         TextField urlField = new TextField("tcp://localhost:61616");
         TextField topicNameWeatherField = new TextField("prediction.Weather");
         TextField topicNameEnergyField = new TextField("energy.MarketPrices");
         TextField powerChargeSolarField = new TextField("0.0");
         TextField powerChargeWindField = new TextField("0.0");
-        CheckBox recommendedHalfBatteryCheckbox = new CheckBox("Recommended Half Battery");
+        TextField batteryCapacityField = new TextField("0.0");
+        CheckBox recommendedHalfBatteryCheckbox = new CheckBox("Want to stop at 50% battery capacity?");
 
         addTextToGrids(grid, urlField, topicNameWeatherField, topicNameEnergyField, powerChargeSolarField,
-                powerChargeWindField, recommendedHalfBatteryCheckbox);
+                powerChargeWindField, batteryCapacityField, recommendedHalfBatteryCheckbox);
 
         Button submitButton = new Button("Submit");
         submitButton.setOnAction(e -> {
@@ -40,17 +42,18 @@ public class View extends Application {
             topicNameEnergy = topicNameEnergyField.getText();
             powerChargeSolar = Float.parseFloat(powerChargeSolarField.getText());
             powerChargeWind = Float.parseFloat(powerChargeWindField.getText());
+            batteryCapacity = Float.parseFloat(batteryCapacityField.getText());
             recommendedHalfBattery = recommendedHalfBatteryCheckbox.isSelected();
 
             new Thread(() -> Main.updateUserValues(url, topicNameWeather, topicNameEnergy, powerChargeSolar,
-                    powerChargeWind, recommendedHalfBattery)).start();
+                    powerChargeWind, batteryCapacity, recommendedHalfBattery)).start();
             showResultsWindow(url, topicNameWeather, topicNameEnergy, powerChargeSolar, powerChargeWind, recommendedHalfBattery);
         });
         submitButtonAdder(primaryStage, grid, submitButton);
     }
 
     private static void submitButtonAdder(Stage primaryStage, GridPane grid, Button submitButton) {
-        grid.add(submitButton, 0, 6, 2, 1);
+        grid.add(submitButton, 0, 7, 2, 1);
         Scene scene = new Scene(grid, 400, 300);
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -64,7 +67,9 @@ public class View extends Application {
         return grid;
     }
 
-    private static void addTextToGrids(GridPane grid, TextField urlField, TextField topicNameWeatherField, TextField topicNameEnergyField, TextField powerChargeSolarField, TextField powerChargeWindField, CheckBox recommendedHalfBatteryCheckbox) {
+    private static void addTextToGrids(GridPane grid, TextField urlField, TextField topicNameWeatherField,
+                                       TextField topicNameEnergyField, TextField powerChargeSolarField, TextField powerChargeWindField,
+                                       TextField batteryCapacityField, CheckBox recommendedHalfBatteryCheckbox) {
         grid.add(new Label("URL:"), 0, 0);
         grid.add(urlField, 1, 0);
         grid.add(new Label("Topic Name Weather:"), 0, 1);
@@ -75,7 +80,9 @@ public class View extends Application {
         grid.add(powerChargeSolarField, 1, 3);
         grid.add(new Label("Power Charge Wind:"), 0, 4);
         grid.add(powerChargeWindField, 1, 4);
-        grid.add(recommendedHalfBatteryCheckbox, 0, 5, 2, 1);
+        grid.add(new Label("Your Battery Capacity:"), 0, 5);
+        grid.add(batteryCapacityField, 1, 5);
+        grid.add(recommendedHalfBatteryCheckbox, 0, 6, 2, 1);
     }
 
     private void showResultsWindow(String url, String topicNameWeather, String topicNameEnergy,
@@ -90,7 +97,7 @@ public class View extends Application {
     }
 
     private static void extractedGridInfo(String url, String topicNameWeather, String topicNameEnergy, float powerChargeSolar, float powerChargeWind, boolean recommendedHalfBattery, GridPane grid) {
-        grid.add(new Label("URL:"), 0, 0);
+        grid.add(new Label("Broker URL:"), 0, 0);
         grid.add(new Label(url), 1, 0);
         grid.add(new Label("Topic Name Weather:"), 0, 1);
         grid.add(new Label(topicNameWeather), 1, 1);
@@ -100,7 +107,9 @@ public class View extends Application {
         grid.add(new Label(String.valueOf(powerChargeSolar)), 1, 3);
         grid.add(new Label("Power Charge Wind:"), 0, 4);
         grid.add(new Label(String.valueOf(powerChargeWind)), 1, 4);
-        grid.add(new Label("Recommended Half Battery:"), 0, 5);
-        grid.add(new Label(String.valueOf(recommendedHalfBattery)), 1, 5);
+        grid.add(new Label("Your Battery Capacity:"), 0, 5);
+        grid.add(new Label(String.valueOf(powerChargeWind)), 1, 5);
+        grid.add(new Label("Want to stop at 50% battery capacity?:"), 0, 6);
+        grid.add(new Label(String.valueOf(recommendedHalfBattery)), 1, 6);
     }
 }

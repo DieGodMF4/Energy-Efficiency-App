@@ -4,19 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08c0914d-b1b9-4648-a6ac-be09ae099e33" name="Changes" comment="BIG ARRANGEMENT PROVIDER MODULES">
-      <change afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/BusinessController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/MyManagerException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/Subscriber.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/TopicSubscriber.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/UserValuesInputs.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/view/View.java" afterDir="false" />
+    <list default="true" id="08c0914d-b1b9-4648-a6ac-be09ae099e33" name="Changes" comment="View - Main first inputs made.">
+      <change afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/DataLakeFetcher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/Fetcher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/schemas/EnergyPrice.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/schemas/EnergyPrice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/model/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datalake-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/TopicSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/datalake-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/TopicSubscriber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/JMSPriceStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/JMSPriceStore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/view/ViewFirst.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,25 +45,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "jdk.selected.JAVA_MODULE": "17",
-    "last_opened_file_path": "C:/Users/dmarr/IdeaProjects/final_project/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.propCompiler",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/dmarr/IdeaProjects/final_project/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propCompiler&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="marrero_ferrera_gcid_ulpgc.control" />
@@ -90,7 +83,7 @@
       <recent name="marrero_ferrera_gcid_ulpgc.control.schemas" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainView">
+  <component name="RunManager" selected="Application.Main (1)">
     <configuration name="JsonTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="JsonTest" />
       <module name="datalake-builder-delete" />
@@ -98,7 +91,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="marrero_ferrera_gcid_ulpgc.control.Main" />
+      <module name="weather-provider" />
+      <option name="PROGRAM_PARAMETERS" value="3c3aea5ce433b076c2f83b0c608896d8 tcp://localhost:61616 prediction.Weather 28.01f -15.58f" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="marrero_ferrera_gcid_ulpgc.control.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="marrero_ferrera_gcid_ulpgc.control.Main" />
       <module name="business-showcase" />
       <extension name="coverage">
@@ -111,13 +118,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="marrero_ferrera_gcid_ulpgc.control.Main" />
-      <module name="weather-provider" />
-      <option name="PROGRAM_PARAMETERS" value="3c3aea5ce433b076c2f83b0c608896d8 tcp://localhost:61616 prediction.Weather 28.01f -15.58f" />
+    <configuration name="MainView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="marrero_ferrera_gcid_ulpgc.view.MainView" />
+      <module name="business-showcase" />
+      <option name="VM_PARAMETERS" value="--module-path C:\Users\dmarr\javafx-sdk-21.0.1\lib --add-modules=javafx.controls" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="marrero_ferrera_gcid_ulpgc.control.*" />
+          <option name="PATTERN" value="marrero_ferrera_gcid_ulpgc.view.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -152,22 +159,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="marrero_ferrera_gcid_ulpgc.view.MainView" />
-      <module name="business-showcase" />
-      <option name="VM_PARAMETERS" value="--module-path C:\Users\dmarr\javafx-sdk-21.0.1\lib --add-modules=javafx.controls" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="marrero_ferrera_gcid_ulpgc.view.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="View" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="marrero_ferrera_gcid_ulpgc.view.View" />
+    <configuration name="ViewFirst" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="marrero_ferrera_gcid_ulpgc.view.ViewFirst" />
       <module name="business-showcase" />
       <option name="VM_PARAMETERS" value="--module-path C:\Users\dmarr\javafx-sdk-21.0.1\lib --add-modules=javafx.controls" />
       <extension name="coverage">
@@ -182,10 +175,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MainView" />
         <item itemvalue="Application.Main (1)" />
-        <item itemvalue="Application.View2" />
-        <item itemvalue="Application.Main (2)" />
+        <item itemvalue="Application.ViewFirst" />
+        <item itemvalue="Application.MainView" />
         <item itemvalue="Application.Main (1)" />
       </list>
     </recent_temporary>
@@ -206,7 +198,8 @@
       <workItem from="1704242938809" duration="3241000" />
       <workItem from="1704246308533" duration="640000" />
       <workItem from="1704277029679" duration="17335000" />
-      <workItem from="1704375083626" duration="9006000" />
+      <workItem from="1704375083626" duration="9302000" />
+      <workItem from="1704413957458" duration="3805000" />
     </task>
     <task id="LOCAL-00001" summary="Commit Re-Adjustment">
       <option name="closed" value="true" />
@@ -288,7 +281,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704335651535</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="View - Main first inputs made.">
+      <option name="closed" value="true" />
+      <created>1704390819484</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1704390819485</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,7 +315,8 @@
     <MESSAGE value="MODULE &quot;energy-provider&quot; FINISHED. Schedule perfectioned for 20:30 peninsular TimeZone" />
     <MESSAGE value="module BU created" />
     <MESSAGE value="BIG ARRANGEMENT PROVIDER MODULES" />
-    <option name="LAST_COMMIT_MESSAGE" value="BIG ARRANGEMENT PROVIDER MODULES" />
+    <MESSAGE value="View - Main first inputs made." />
+    <option name="LAST_COMMIT_MESSAGE" value="View - Main first inputs made." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -338,6 +340,11 @@
           <url>file://$PROJECT_DIR$/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java</url>
           <line>7</line>
           <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/view/ViewFirst.java</url>
+          <line>10</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/datalake-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/TopicSubscriber.java</url>
