@@ -15,24 +15,23 @@ public class Main {
         // Misma operación pero en la clase "ViewFinal" para mostrar los resultados tras las operaciones.
     }
 
-    public static void updateUserValues(float latitude, float longitude, String url, String topicNameWeather, String topicNameEnergy, float powerChargeSolar,
+    public static void updateUserValues(String url, String topicNameWeather, String topicNameEnergy, float powerChargeSolar,
                                         float powerChargeWind, float batteryCapacity, boolean recommendedHalfBattery) throws MyManagerException {
-        Fetcher weatherFetcher = new DataLakeFetcher(topicNameWeather, new Weather().getSs(), Instant.now());
-        Fetcher energyFetcher = new DataLakeFetcher(topicNameEnergy, new EnergyPrice().getSs(), Instant.now());
-        Subscriber weatherSubscriber = new TopicSubscriber(topicNameWeather, "WeatherConsumer");
-        Subscriber energySubscriber = new TopicSubscriber(topicNameEnergy, "EnergyConsumer");
+        JsonOperator operator = new JsonOperator(powerChargeSolar, powerChargeWind, batteryCapacity, recommendedHalfBattery);
+        DataLakeFetcher weatherFetcher = new DataLakeFetcher(topicNameWeather, new Weather().getSs(), Instant.now(), operator);
+        DataLakeFetcher energyFetcher = new DataLakeFetcher(topicNameEnergy, new EnergyPrice().getSs(), Instant.now(), operator);
+        Subscriber weatherSubscriber = new TopicSubscriber(url, topicNameWeather, "WeatherConsumer", operator);
+        Subscriber energySubscriber = new TopicSubscriber(url, topicNameEnergy, "EnergyConsumer", operator);
 
+        BusinessController controllerWeather = new BusinessController(weatherFetcher, weatherSubscriber);
+        BusinessController controllerEnergy = new BusinessController(energyFetcher, energySubscriber);
         CountDownLatch latch = new CountDownLatch(2);
 
-        // Crear ExecutorService para ejecutar hilos
         ExecutorService executorService = Executors.newFixedThreadPool(2);
-
-        // Ejecutar fetcher, operate y topicSubscriber en hilos separados
         executorService.submit(() -> {
-            weatherFetcher.fetchFiles();
-            // Operaciones adicionales si es necesario
             try {
-                weatherSubscriber.receiveMessage();
+                controllerWeather.execute();
+                //TODO doFinalModelListForView method to show the final Model List
             } catch (MyManagerException e) {
                 throw new RuntimeException(e);
             }
@@ -40,10 +39,8 @@ public class Main {
         });
 
         executorService.submit(() -> {
-            energyFetcher.fetchFiles();
-            // Operaciones adicionales si es necesario
             try {
-                energySubscriber.receiveMessage();
+                controllerEnergy.execute();
             } catch (MyManagerException e) {
                 throw new RuntimeException(e);
             }
@@ -54,8 +51,7 @@ public class Main {
             // Esperar a que ambos hilos terminen
             latch.await();
         } catch (InterruptedException e) {
-            throw new MyManagerException("a", e);
+            throw new MyManagerException("Error waiting for threads", e);
         }
-        // Ejecutar fetcher, operate y topicSubscriber
     }
 }

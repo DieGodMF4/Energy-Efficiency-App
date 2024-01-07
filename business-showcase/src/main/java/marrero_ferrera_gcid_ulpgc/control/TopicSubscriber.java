@@ -1,19 +1,25 @@
 package marrero_ferrera_gcid_ulpgc.control;
 
-import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
+import java.util.ArrayList;
 import java.util.concurrent.CountDownLatch;
 
 public final class TopicSubscriber implements Subscriber {
-    private static final String url = ActiveMQConnection.DEFAULT_BROKER_URL;
+    private final String url;
     private final String topicName;
     private final String clientID;
+    private final JsonOperator operator;
+    private final ArrayList<String> results;
 
-    public TopicSubscriber(String topicName, String clientID) {
+
+    public TopicSubscriber(String url, String topicName, String clientID, JsonOperator operator) {
+        this.url = url;
         this.topicName = topicName;
         this.clientID = clientID;
+        this.operator = operator;
+        this.results = new ArrayList<>();
     }
 
     @Override
@@ -24,7 +30,7 @@ public final class TopicSubscriber implements Subscriber {
             consumer.setMessageListener(message -> {
                 try {
                     System.out.println(((TextMessage) message).getText());
-                    // storeBuilder.storeMessage(((TextMessage) message).getText());
+                    operator.operateAsSubscriber(((TextMessage) message).getText());
                 } catch (JMSException e) {
                     throw new RuntimeException(e);
                 } finally {
@@ -48,6 +54,9 @@ public final class TopicSubscriber implements Subscriber {
         Topic topic = session.createTopic(topicName);
 
         return session.createDurableSubscriber(topic, clientID);
+    }
+    public ArrayList<String> getResults() {
+        return results;
     }
 
 }

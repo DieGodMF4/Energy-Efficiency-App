@@ -2,7 +2,6 @@ package marrero_ferrera_gcid_ulpgc.control;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import marrero_ferrera_gcid_ulpgc.model.Model;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -12,18 +11,26 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.concurrent.CountDownLatch;
 
 public class DataLakeFetcher implements Fetcher {
+    private final JsonOperator operator;
     private String additionalPath;
     private final String topicName;
     private final String ss;
-    private final String date;
+    private final Instant date;
+    private final ArrayList<String> results;
 
-    public DataLakeFetcher(String topicName, String ss, String date) {
+    public DataLakeFetcher(String topicName, String ss, Instant date, JsonOperator operator) {
+        this.operator = operator;
         this.additionalPath = "";
         this.topicName = topicName;
         this.ss = ss;
         this.date = date;
+        this.results = new ArrayList<>();
     }
 
     public DataLakeFetcher setAdditionalPath(String additionalPath) {
@@ -32,21 +39,42 @@ public class DataLakeFetcher implements Fetcher {
     }
 
     @Override
-    public void fetchFilesJson() {
+    public void fetchFiles() throws MyManagerException {
         String filePath = buildFinalFilePath();
-
         File file = new File(filePath);
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                // Parsear cada línea como un objeto JSON
                 JsonElement jsonElement = JsonParser.parseString(line);
-                System.out.println(jsonElement);
+                results.add(jsonElement.getAsString());
             }
+            operator.operateAsFetcher(results);
         } catch (IOException e) {
-            e.printStackTrace(); // Manejo adecuado de excepciones
+            throw new MyManagerException("An error occurred while searching the file", e);
         }
-        // return new Model(predTimeEnergy, "energyMarketPrices", "weatherProvider", weatherType, wind, clouds, price, slot);
+    }
+
+    @Override
+    public boolean fileExists() throws MyManagerException {
+        String filePath = buildFinalFilePath();
+        File file = new File(filePath);
+
+        if (file.exists() && file.isFile()) {
+            Set<Instant> distinctPredictionTimes = new HashSet<>();
+            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                String line;
+                while ((line = reader.readLine()) != null && distinctPredictionTimes.size() < 10) {
+                    JsonElement jsonElement = JsonParser.parseString(line);
+                    Instant predictionTime = Instant.parse(jsonElement.getAsJsonObject().get("predictionTime").getAsString());
+                    distinctPredictionTimes.add(predictionTime);
+                    // EXTRACTABLE METHOD
+                }
+            } catch (IOException e) {
+                throw new MyManagerException("Error occurred while looking for the file", e);
+            }
+            return distinctPredictionTimes.size() >= 10;
+        }
+        return false;
     }
 
     private String buildFinalFilePath() {
@@ -56,8 +84,12 @@ public class DataLakeFetcher implements Fetcher {
         return String.join(File.separator, basePath, fileName);
     }
 
-    private String formatDate(String date) {
-        LocalDateTime dateTime = LocalDateTime.ofInstant(Instant.parse(date), ZoneId.systemDefault());
+    private String formatDate(Instant date) {
+        LocalDateTime dateTime = LocalDateTime.ofInstant(date, ZoneId.systemDefault());
         return dateTime.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+    }
+
+    public ArrayList<String> getResults() {
+        return results;
     }
 }
