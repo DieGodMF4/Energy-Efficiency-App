@@ -22,7 +22,7 @@ public class JsonOperator {
     }
 
     public void operateAsSubscriber(String jsonString) {
-        // Si la string tiene como ss weather: hacer método para tratamiento weather
+        // end up doing the same as below, but waiting in a different way.
     }
 
     public void operateAsFetcher(ArrayList<String> jsonStrings) {
@@ -30,7 +30,7 @@ public class JsonOperator {
 
         if (isWeatherProvider(jsonElements.get(0))) {
             for (JsonElement currentJson : jsonElements) {
-                // Realizar el método específico para WeatherProvider
+                // Method for processing weather strings
                 processWeatherProvider(currentJson);
             }
         }
@@ -39,7 +39,8 @@ public class JsonOperator {
                 "con" + powerChargeSolar + powerChargeWind + batteryCapacity + recommendedHalfBattery);
     }
 
-    private void processWeatherProvider(JsonElement firstJsonElement) {
+    private void processWeatherProvider(JsonElement currentJsonElement) {
+        //TODO get wind efficiency, solar efficiency, battery...
     }
 
     private ArrayList<JsonElement> parseJsonStrings(ArrayList<String> jsonStrings) {
