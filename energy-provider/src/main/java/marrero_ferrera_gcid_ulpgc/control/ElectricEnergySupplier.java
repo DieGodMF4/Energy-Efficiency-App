@@ -23,12 +23,11 @@ public class ElectricEnergySupplier implements PriceSupplier {
         try {
             JsonObject jsonObject = apiConnector();
             JsonArray valuesArray = jsonParsingToValues(jsonObject);
-
             if (valuesArray != null) {
                 for (JsonElement valueElement : valuesArray) {
                     EnergyPrice price = new EnergyPrice();
                     price.setPrice(valueElement.getAsJsonObject().get("value").getAsFloat());
-                    price.setPredictionTime(Instant.parse(valueElement.getAsJsonObject().get("datetime").getAsString()));
+                    price.setPredictionTime(Instant.parse(valueElement.getAsJsonObject().get("datetime").getAsString()).plusSeconds(3600));
                     prices.add(price);
                 }
                 classifyPrices(prices);
@@ -73,15 +72,16 @@ public class ElectricEnergySupplier implements PriceSupplier {
     private JsonObject apiConnector() {
         HttpClient httpClient = HttpClients.createDefault();
         String httpUrl = "https://apidatos.ree.es/es/datos/mercados/precios-mercados-tiempo-real?start_date=" +
-                obtainInstantMidNight(LocalDate.now().plusDays(1)) + "&end_date=" +
-                obtainInstantMidNight(LocalDate.now().plusDays(2)) + "&time_trunc=hour";
+                obtainInstantMidNight(LocalDate.now().plusDays(0)) + "&end_date=" +
+                obtainInstantMidNight(LocalDate.now().plusDays(1)).plusSeconds(3600) + "&time_trunc=hour";
         HttpGet httpGet = new HttpGet(httpUrl);
 
         try {
             HttpResponse response = httpClient.execute(httpGet);
 
             String json = EntityUtils.toString(response.getEntity());
-            return new com.google.gson.JsonParser().parse(json).getAsJsonObject();
+            JsonObject asJsonObject = new JsonParser().parse(json).getAsJsonObject();
+            return asJsonObject;
         } catch (IOException e) {
             throw new JsonIOException(e);
         }
@@ -96,7 +96,6 @@ public class ElectricEnergySupplier implements PriceSupplier {
         JsonArray includedArray = jsonObject.getAsJsonArray("included");
         if (includedArray != null && !includedArray.isEmpty()) {
             JsonObject pvpcObject = includedArray.get(0).getAsJsonObject();
-
             JsonObject attributesObject = pvpcObject.getAsJsonObject("attributes");
             if (attributesObject != null) {
                 return attributesObject.getAsJsonArray("values");

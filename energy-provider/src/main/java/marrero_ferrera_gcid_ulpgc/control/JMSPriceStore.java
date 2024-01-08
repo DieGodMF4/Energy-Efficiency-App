@@ -18,7 +18,6 @@ public record JMSPriceStore(String url, String topicName) implements PriceStore 
             Topic topic = session.createTopic(topicName);
             MessageProducer producer = session.createProducer(topic);
             TextMessage message = session.createTextMessage(toJson(energyPrice));
-            System.out.println(message.getText());
             producer.send(message);
             connection.close();
         } catch (JMSException e) {
