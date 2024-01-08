@@ -1,6 +1,7 @@
 package marrero_ferrera_gcid_ulpgc.view;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -10,6 +11,14 @@ import marrero_ferrera_gcid_ulpgc.control.Main;
 import marrero_ferrera_gcid_ulpgc.control.MyManagerException;
 
 public class ViewFirst extends Application {
+    // DEPRECIATED
+    // DEPRECIATED
+    // DEPRECIATED
+    // DEPRECIATED
+    // DEPRECIATED
+    // DEPRECIATED
+    // DEPRECIATED
+    // DEPRECIATED
     private static String url;
     private static String topicNameWeather;
     private static String topicNameEnergy;
@@ -48,14 +57,9 @@ public class ViewFirst extends Application {
             batteryCapacity = Float.parseFloat(batteryCapacityField.getText());
             recommendedHalfBattery = recommendedHalfBatteryCheckbox.isSelected();
 
-            new Thread(() -> {
-                try {
-                    Main.updateUserValues(url, topicNameWeather, topicNameEnergy,
-                            powerChargeSolar, powerChargeWind, batteryCapacity, recommendedHalfBattery);
-                } catch (MyManagerException ex) {
-                    throw new RuntimeException(ex);
-                }
-            }).start();
+        });
+        primaryStage.setOnCloseRequest(event -> {
+            Platform.exit();
         });
         submitButtonAdder(primaryStage, grid, submitButton);
     }

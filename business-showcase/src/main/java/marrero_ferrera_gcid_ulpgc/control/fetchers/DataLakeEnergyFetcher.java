@@ -1,7 +1,11 @@
-package marrero_ferrera_gcid_ulpgc.control;
+package marrero_ferrera_gcid_ulpgc.control.fetchers;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import marrero_ferrera_gcid_ulpgc.control.MyManagerException;
+import marrero_ferrera_gcid_ulpgc.control.handlers.EnergyHandler;
+import marrero_ferrera_gcid_ulpgc.control.schemas.EnergyPrice;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -11,31 +15,22 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.concurrent.CountDownLatch;
 
-public class DataLakeFetcher implements Fetcher {
-    private final JsonOperator operator;
-    private String additionalPath;
+public class DataLakeEnergyFetcher implements DataLakeFetcher {
+    private final EnergyHandler handler;
+    private final String additionalPath;
     private final String topicName;
     private final String ss;
     private final Instant date;
-    private final ArrayList<String> results;
 
-    public DataLakeFetcher(String topicName, String ss, Instant date, JsonOperator operator) {
-        this.operator = operator;
-        this.additionalPath = "";
+    public DataLakeEnergyFetcher(String topicName, Instant date, EnergyHandler handler, String additionalPath) {
+        this.handler = handler;
         this.topicName = topicName;
-        this.ss = ss;
+        this.ss = "EnergyPricesProvider";
         this.date = date;
-        this.results = new ArrayList<>();
-    }
-
-    public DataLakeFetcher setAdditionalPath(String additionalPath) {
         this.additionalPath = additionalPath;
-        return this;
     }
 
     @Override
@@ -45,10 +40,8 @@ public class DataLakeFetcher implements Fetcher {
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                JsonElement jsonElement = JsonParser.parseString(line);
-                results.add(jsonElement.getAsString());
+                handler.handle(new Gson().fromJson(line, EnergyPrice.class));
             }
-            operator.operateAsFetcher(results);
         } catch (IOException e) {
             throw new MyManagerException("An error occurred while searching the file", e);
         }

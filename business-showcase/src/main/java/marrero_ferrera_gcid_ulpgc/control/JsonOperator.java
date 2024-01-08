@@ -4,7 +4,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import marrero_ferrera_gcid_ulpgc.control.schemas.EnergyPrice;
-import marrero_ferrera_gcid_ulpgc.model.Model;
+import marrero_ferrera_gcid_ulpgc.model.Model.Item;
 
 import java.time.Instant;
 import java.time.LocalTime;
@@ -12,11 +12,17 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 
 public class JsonOperator {
+    // DEPRECIATED
+    // DEPRECIATED
+    // DEPRECIATED
+    // DEPRECIATED
+    // DEPRECIATED
+    // DEPRECIATED
     private final float powerChargeSolar;
     private final float powerChargeWind;
     private final float batteryCapacity;
     private final boolean recommendedHalfBattery;
-    private final ArrayList<Model> resultModels;
+    private final ArrayList<Item> resultItems;
 
 
     public JsonOperator(float powerChargeSolar, float powerChargeWind,
@@ -25,75 +31,67 @@ public class JsonOperator {
         this.powerChargeWind = powerChargeWind;
         this.batteryCapacity = batteryCapacity;
         this.recommendedHalfBattery = recommendedHalfBattery;
-        this.resultModels = new ArrayList<>();
+        this.resultItems = new ArrayList<>();
     }
 
     public void operateAsSubscriber(String jsonString) throws MyManagerException {
         BuildModelFinal buildModelFinal = new BuildModelFinal();
         JsonElement jsonElement = parseJsonString(jsonString);
         if (isWeatherProvider(jsonElement)) {
-            Model model = processWeatherProvider(jsonElement);
-            resultModels.add(model);
+            Item item = processWeatherProvider(jsonElement);
+            resultItems.add(item);
         } else {
-            Model model = processEnergyProvider(jsonElement);
-            resultModels.add(model);
+            Item item = processEnergyProvider(jsonElement);
+            resultItems.add(item);
         }
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new MyManagerException("An error occurred while receiving Subscriber messages.", e);
         }
-        buildModelFinal.buildFinalModels(resultModels);
     }
 
     public void operateAsFetcher(ArrayList<String> jsonStrings) {
-        BuildModelFinal buildModelFinal = new BuildModelFinal();
         ArrayList<JsonElement> jsonElements = parseJsonStrings(jsonStrings);
         if (isWeatherProvider(jsonElements.get(0))) {
             for (JsonElement currentJson : jsonElements) {
-                // Method for processing weather strings
-                Model model = processWeatherProvider(currentJson);
-                resultModels.add(model);
+                Item item = processWeatherProvider(currentJson);
+                resultItems.add(item);
             }
         } else {
             for (JsonElement currentJson : jsonElements) {
-                // Method for processing energy strings
-                Model model = processEnergyProvider(currentJson);
-                resultModels.add(model);
+                Item item = processEnergyProvider(currentJson);
+                resultItems.add(item);
             }
         }
-        for (Model model : resultModels) {
-            System.out.println(model.toString());
+        for (Item item : resultItems) {
+            System.out.println(item.toString());
         }
         //buildModelFinal.buildFinalModels(resultModels);
     }
 
-    private Model processEnergyProvider(JsonElement currentJsonElement) {
-        Model model = new Model();
-        model.setPredictionTime(getPredictionTime(currentJsonElement.getAsJsonObject()));
+    private Item processEnergyProvider(JsonElement currentJsonElement) {
+        Item item = new Item();
+        item.setPredictionTime(getPredictionTime(currentJsonElement.getAsJsonObject()));
         if (currentJsonElement.isJsonObject()) {
             JsonObject energyObject = currentJsonElement.getAsJsonObject();
-            model.setPrice(getPrice(energyObject));
-            model.setSlot(getSlot(energyObject));
+            item.setPrice(getPrice(energyObject));
+            item.setSlot(getSlot(energyObject));
         }
-        return model;
+        return item;
     }
 
-    private Model processWeatherProvider(JsonElement currentJsonElement) {
-        Model model = new Model();
-
-        // Extract common fields
-        model.setPredictionTime(getPredictionTime(currentJsonElement.getAsJsonObject()));
-
-        // Extract weather-specific fields
+    private Item processWeatherProvider(JsonElement currentJsonElement) {
+        Item item = new Item();
+        item.setPredictionTime(getPredictionTime(currentJsonElement.getAsJsonObject()));
         if (currentJsonElement.isJsonObject()) {
             JsonObject weatherObject = currentJsonElement.getAsJsonObject();
-            model.setWeatherType(getWeatherType(weatherObject));
-            model.setWindGained(getWindEfficiency(weatherObject));
-            model.setSolarGained(getSolarEfficiency(weatherObject));
-            model.setBatteryGained(getBatteryGained(weatherObject));
+            item.setWeatherType(getWeatherType(weatherObject));
+            item.setWindGained(getWindEfficiency(weatherObject));
+            item.setSolarGained(getSolarEfficiency(weatherObject));
+            item.setBatteryGained(getBatteryGained(weatherObject));
         }
-        return model;
+        return item;
     }
 
     private float getBatteryGained(JsonObject weatherObject) {

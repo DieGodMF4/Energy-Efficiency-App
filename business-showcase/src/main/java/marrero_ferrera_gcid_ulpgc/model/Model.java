@@ -3,86 +3,132 @@ package marrero_ferrera_gcid_ulpgc.model;
 import marrero_ferrera_gcid_ulpgc.control.schemas.EnergyPrice;
 
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Model {
-    private Instant predictionTime;
-    private String weatherType;
-    private float windGained;
-    private float solarGained;
-    private float batteryGained;
-    private float price;
-    private EnergyPrice.Slot slot;
+    ArrayList<Item> items;
+    float powerChargeSolar;
+    float powerChargeWind;
+    float batteryCapacity;
+    boolean recommendedHalfBattery;
 
-    public Model(Instant predictionTime, String weatherType, float windGained, float solarGained, float batteryGained, float price, EnergyPrice.Slot slot) {
-        this.predictionTime = predictionTime;
-        this.weatherType = weatherType;
-        this.windGained = windGained;
-        this.solarGained = solarGained;
-        this.batteryGained = batteryGained;
-        this.price = price;
-        this.slot = slot;
+    public Model(){
+        this.items = new ArrayList<>();
     }
 
-    public Model(){}
-
-    public void setPredictionTime(Instant predictionTime) {
-        this.predictionTime = predictionTime;
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+    public void addItem(Item item) {
+        items.add(item);
     }
 
-    public void setWeatherType(String weatherType) {
-        this.weatherType = weatherType;
+    public void setRenewableFields(float powerChargeSolar, float powerChargeWind, float batteryCapacity,
+                                   boolean recommendedHalfBattery) {
+        this.powerChargeSolar = powerChargeSolar;
+        this.powerChargeWind = powerChargeWind;
+        this.batteryCapacity = batteryCapacity;
+        this.recommendedHalfBattery = recommendedHalfBattery;
     }
 
-    public void setWindGained(float windGained) {
-        this.windGained = windGained;
+    public float getPowerChargeSolar() {
+        return powerChargeSolar;
     }
 
-    public void setSolarGained(float solarGained) {
-        this.solarGained = solarGained;
+    public float getPowerChargeWind() {
+        return powerChargeWind;
     }
 
-    public void setPrice(float price) {
-        this.price = price;
+    public boolean isRecommendedHalfBattery() {
+        return recommendedHalfBattery;
     }
 
-    public void setSlot(EnergyPrice.Slot slot) {
-        this.slot = slot;
+    public float getBatteryCapacity() {
+        return batteryCapacity;
     }
 
-    public Instant getPredictionTime() {
-        return predictionTime;
-    }
+    public static class Item {
+        private Instant predictionTime;
+        private String weatherType;
+        private float windGained;
+        private float solarGained;
+        private float batteryGained;
+        private float price;
+        private EnergyPrice.Slot slot;
 
-    public String getWeatherType() {
-        return weatherType;
-    }
+        public Item(Instant predictionTime, String weatherType, float windGained, float solarGained, float batteryGained, float price, EnergyPrice.Slot slot) {
+            this.predictionTime = predictionTime;
+            this.weatherType = weatherType;
+            this.windGained = windGained;
+            this.solarGained = solarGained;
+            this.batteryGained = batteryGained;
+            this.price = price;
+            this.slot = slot;
+        }
 
-    public float getWindGained() {
-        return windGained;
-    }
+        public Item() {
+        }
 
-    public float getPrice() {
-        return price;
-    }
+        public void setPredictionTime(Instant predictionTime) {
+            this.predictionTime = predictionTime;
+        }
 
-    public EnergyPrice.Slot getSlot() {
-        return slot;
-    }
+        public void setWeatherType(String weatherType) {
+            this.weatherType = weatherType;
+        }
 
-    public float getSolarGained() {
-        return solarGained;
-    }
+        public void setWindGained(float windGained) {
+            this.windGained = windGained;
+        }
 
-    public float getBatteryGained() {
-        return batteryGained;
-    }
+        public void setSolarGained(float solarGained) {
+            this.solarGained = solarGained;
+        }
 
-    public void setBatteryGained(float batteryGained) {
-        this.batteryGained = batteryGained;
-    }
+        public void setPrice(float price) {
+            this.price = price;
+        }
 
-    @Override
-    public String toString(){
-        return "Model: "+ getPredictionTime()+", "+getPrice()+", "+getWeatherType()+", "+", "+getSolarGained()+", "+getWindGained()+", "+getBatteryGained();
+        public void setSlot(EnergyPrice.Slot slot) {
+            this.slot = slot;
+        }
+
+        public Instant getPredictionTime() {
+            return predictionTime;
+        }
+
+        public String getWeatherType() {
+            return weatherType;
+        }
+
+        public float getWindGained() {
+            return windGained;
+        }
+
+        public float getPrice() {
+            return price;
+        }
+
+        public EnergyPrice.Slot getSlot() {
+            return slot;
+        }
+
+        public float getSolarGained() {
+            return solarGained;
+        }
+
+        public float getBatteryGained() {
+            return batteryGained;
+        }
+
+        public void setBatteryGained(float batteryGained) {
+            this.batteryGained = batteryGained;
+        }
+
+        @Override
+        public String toString() {
+            return "Model: " + getPredictionTime() + ", " + getPrice() + ", " + getWeatherType() + ", " + ", " + getSolarGained() + ", " + getWindGained() + ", " + getBatteryGained();
+        }
     }
 }
