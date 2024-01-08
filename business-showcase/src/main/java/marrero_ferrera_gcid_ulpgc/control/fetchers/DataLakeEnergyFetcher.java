@@ -1,8 +1,6 @@
 package marrero_ferrera_gcid_ulpgc.control.fetchers;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 import marrero_ferrera_gcid_ulpgc.control.MyManagerException;
 import marrero_ferrera_gcid_ulpgc.control.handlers.EnergyHandler;
 import marrero_ferrera_gcid_ulpgc.control.schemas.EnergyPrice;
@@ -24,6 +22,9 @@ public class DataLakeEnergyFetcher implements DataLakeFetcher {
     private final String topicName;
     private final String ss;
     private final Instant date;
+    private final Gson gson = new GsonBuilder()
+            .registerTypeAdapter(Instant.class, new DataLakeEnergyFetcher.InstantSerializer())
+            .create();
 
     public DataLakeEnergyFetcher(String topicName, Instant date, EnergyHandler handler, String additionalPath) {
         this.handler = handler;
@@ -40,7 +41,7 @@ public class DataLakeEnergyFetcher implements DataLakeFetcher {
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                handler.handle(new Gson().fromJson(line, EnergyPrice.class));
+                handler.handle(gson.fromJson(line, EnergyPrice.class));
             }
         } catch (IOException e) {
             throw new MyManagerException("An error occurred while searching the file", e);
@@ -83,5 +84,17 @@ public class DataLakeEnergyFetcher implements DataLakeFetcher {
     private String formatDate(Instant date) {
         LocalDateTime dateTime = LocalDateTime.ofInstant(date, ZoneId.systemDefault());
         return dateTime.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+    }
+
+    static class InstantSerializer implements JsonSerializer<Instant>, JsonDeserializer<Instant> {
+        @Override
+        public JsonElement serialize(Instant instant, java.lang.reflect.Type type, JsonSerializationContext jsonSerializationContext) {
+            return new JsonPrimitive(instant.toString());
+        }
+
+        @Override
+        public Instant deserialize(JsonElement jsonElement, java.lang.reflect.Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+            return Instant.parse(jsonElement.getAsString());
+        }
     }
 }

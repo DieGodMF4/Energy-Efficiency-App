@@ -27,7 +27,7 @@ public class Weather {
         this.wind = wind;
     }
 
-    public Weather(){
+    public Weather() {
         this.ss = "WeatherProvider";
         this.ts = Instant.now();
     }

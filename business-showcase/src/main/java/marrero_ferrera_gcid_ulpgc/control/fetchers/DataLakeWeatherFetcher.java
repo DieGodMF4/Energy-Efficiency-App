@@ -1,8 +1,6 @@
 package marrero_ferrera_gcid_ulpgc.control.fetchers;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 import marrero_ferrera_gcid_ulpgc.control.MyManagerException;
 import marrero_ferrera_gcid_ulpgc.control.handlers.WeatherHandler;
 import marrero_ferrera_gcid_ulpgc.control.schemas.Weather;
@@ -11,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -24,6 +23,9 @@ public class DataLakeWeatherFetcher implements DataLakeFetcher {
     private final String topicName;
     private final String ss;
     private final Instant date;
+    private final Gson gson = new GsonBuilder()
+            .registerTypeAdapter(Instant.class, new InstantSerializer())
+            .create();
 
     public DataLakeWeatherFetcher(String topicName, Instant date, WeatherHandler handler, String additionalPath) {
         this.handler = handler;
@@ -40,7 +42,8 @@ public class DataLakeWeatherFetcher implements DataLakeFetcher {
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                handler.handle(new Gson().fromJson(line, Weather.class));
+                Weather weather = gson.fromJson(line, Weather.class);
+                handler.handle(weather);
             }
         } catch (IOException e) {
             throw new MyManagerException("An error occurred while searching the file", e);
@@ -48,23 +51,10 @@ public class DataLakeWeatherFetcher implements DataLakeFetcher {
     }
 
     @Override
-    public boolean fileExists() throws MyManagerException {
+    public boolean fileExists() {
         String filePath = buildFinalFilePath();
         File file = new File(filePath);
-
-        if (file.exists() && file.isFile()) {
-            Set<Instant> distinctPredictionTimes = new HashSet<>();
-            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-                String line;
-                while ((line = reader.readLine()) != null && distinctPredictionTimes.size() < 10) {
-                    parseAndAddPredictionTime(line, distinctPredictionTimes);
-                }
-            } catch (IOException e) {
-                throw new MyManagerException("Error occurred while looking for the file", e);
-            }
-            return distinctPredictionTimes.size() >= 10;
-        }
-        return false;
+        return file.exists() && file.length() > 0;
     }
 
     private static void parseAndAddPredictionTime(String line, Set<Instant> distinctPredictionTimes) {
@@ -83,5 +73,17 @@ public class DataLakeWeatherFetcher implements DataLakeFetcher {
     private String formatDate(Instant date) {
         LocalDateTime dateTime = LocalDateTime.ofInstant(date, ZoneId.systemDefault());
         return dateTime.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+    }
+
+    static class InstantSerializer implements JsonSerializer<Instant>, JsonDeserializer<Instant> {
+        @Override
+        public JsonElement serialize(Instant instant, java.lang.reflect.Type type, JsonSerializationContext jsonSerializationContext) {
+            return new JsonPrimitive(instant.toString());
+        }
+
+        @Override
+        public Instant deserialize(JsonElement jsonElement, java.lang.reflect.Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+            return Instant.parse(jsonElement.getAsString());
+        }
     }
 }

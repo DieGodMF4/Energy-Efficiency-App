@@ -48,12 +48,16 @@ public class Main {
         if (energyDataLakeFetcher.fileExists()) energyDataLakeFetcher.fetchFiles();
         else System.out.println("Energy File does not exist or is inaccessible");
 
+        for (Model.Item item : model.getItems()) {
+            System.out.println(item.toString());
+        }
         // ViewFinal.launch() // Pasando como parámetro Model model.
     }
 
     private static Session buildSession(String url) throws JMSException {
         ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(url);
         Connection connection = connectionFactory.createConnection();
+        connection.setClientID("client-ID");
         connection.start();
         return connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
     }
