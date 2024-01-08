@@ -80,8 +80,7 @@ public class ElectricEnergySupplier implements PriceSupplier {
             HttpResponse response = httpClient.execute(httpGet);
 
             String json = EntityUtils.toString(response.getEntity());
-            JsonObject asJsonObject = new JsonParser().parse(json).getAsJsonObject();
-            return asJsonObject;
+            return new JsonParser().parse(json).getAsJsonObject();
         } catch (IOException e) {
             throw new JsonIOException(e);
         }
