@@ -29,9 +29,8 @@ public final class TopicSubscriber implements Subscriber {
             CountDownLatch latch = new CountDownLatch(1);
             consumer.setMessageListener(message -> {
                 try {
-                    System.out.println(((TextMessage) message).getText());
                     operator.operateAsSubscriber(((TextMessage) message).getText());
-                } catch (JMSException e) {
+                } catch (JMSException | MyManagerException e) {
                     throw new RuntimeException(e);
                 } finally {
                     latch.countDown();

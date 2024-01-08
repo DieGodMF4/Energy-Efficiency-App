@@ -31,7 +31,6 @@ public class Main {
         executorService.submit(() -> {
             try {
                 controllerWeather.execute();
-                //TODO doFinalModelListForView method to show the final Model List
             } catch (MyManagerException e) {
                 throw new RuntimeException(e);
             }
@@ -48,7 +47,6 @@ public class Main {
         });
 
         try {
-            // Esperar a que ambos hilos terminen
             latch.await();
         } catch (InterruptedException e) {
             throw new MyManagerException("Error waiting for threads", e);

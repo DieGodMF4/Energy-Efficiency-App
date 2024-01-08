@@ -64,10 +64,7 @@ public class DataLakeFetcher implements Fetcher {
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
                 String line;
                 while ((line = reader.readLine()) != null && distinctPredictionTimes.size() < 10) {
-                    JsonElement jsonElement = JsonParser.parseString(line);
-                    Instant predictionTime = Instant.parse(jsonElement.getAsJsonObject().get("predictionTime").getAsString());
-                    distinctPredictionTimes.add(predictionTime);
-                    // EXTRACTABLE METHOD
+                    parseAndAddPredictionTime(line, distinctPredictionTimes);
                 }
             } catch (IOException e) {
                 throw new MyManagerException("Error occurred while looking for the file", e);
@@ -75,6 +72,12 @@ public class DataLakeFetcher implements Fetcher {
             return distinctPredictionTimes.size() >= 10;
         }
         return false;
+    }
+
+    private static void parseAndAddPredictionTime(String line, Set<Instant> distinctPredictionTimes) {
+        JsonElement jsonElement = JsonParser.parseString(line);
+        Instant predictionTime = Instant.parse(jsonElement.getAsJsonObject().get("predictionTime").getAsString());
+        distinctPredictionTimes.add(predictionTime);
     }
 
     private String buildFinalFilePath() {
@@ -87,9 +90,5 @@ public class DataLakeFetcher implements Fetcher {
     private String formatDate(Instant date) {
         LocalDateTime dateTime = LocalDateTime.ofInstant(date, ZoneId.systemDefault());
         return dateTime.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
-    }
-
-    public ArrayList<String> getResults() {
-        return results;
     }
 }
