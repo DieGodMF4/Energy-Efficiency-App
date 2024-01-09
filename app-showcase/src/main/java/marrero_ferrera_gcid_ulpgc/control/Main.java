@@ -37,6 +37,7 @@ public class Main {
         DataLakeFetcher weatherDataLakeFetcher = new DataLakeWeatherFetcher(topicNameWeather, Instant.now(), weatherHandler, additionalPath);
         DataLakeFetcher energyDataLakeFetcher = new DataLakeEnergyFetcher(topicNameEnergy, Instant.now(), energyHandler, additionalPath);
 
+        System.out.println("Running app...");
         Session session;
         try {
             session = buildSession(url);
