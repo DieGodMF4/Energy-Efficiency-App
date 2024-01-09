@@ -33,7 +33,7 @@ public class EnergySubscriber {
             TopicSubscriber durableSubscriber = session.createDurableSubscriber(new ActiveMQTopic(topic), "client-id " + topic);
             durableSubscriber.setMessageListener(message -> {
                 try {
-                    energyHandler.handle(new Gson().fromJson(((TextMessage) message).getText(), EnergyPrice.class));
+                    energyHandler.handle(gson.fromJson(((TextMessage) message).getText(), EnergyPrice.class));
                 } catch (JMSException e) {
                     throw new RuntimeException(e);
                 }

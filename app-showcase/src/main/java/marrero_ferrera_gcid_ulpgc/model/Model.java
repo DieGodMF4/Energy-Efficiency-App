@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 public class Model {
     ArrayList<Item> weatherItems;
-    ArrayList<Item> energyItems;
     ArrayList<Item> finalItems;
     float powerChargeSolar;
     float powerChargeWind;
@@ -16,7 +15,6 @@ public class Model {
 
     public Model(){
         this.weatherItems = new ArrayList<>();
-        this.energyItems = new ArrayList<>();
         this.finalItems = new ArrayList<>();
     }
 
@@ -24,17 +22,10 @@ public class Model {
         return weatherItems;
     }
 
-    public ArrayList<Item> getEnergyItems() {
-        return energyItems;
-    }
-
     public ArrayList<Item> getFinalItems() {
         return finalItems;
     }
 
-    public void addEnergyItem(Item item) {
-        energyItems.add(item);
-    }
     public void addWeatherItem(Item item) {
         weatherItems.add(item);
     }

@@ -4,37 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08c0914d-b1b9-4648-a6ac-be09ae099e33" name="Changes" comment="Problems with Fetcher while deserializing.">
-      <change afterPath="$PROJECT_DIR$/app-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/InstantSerializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/fetchers/WeatherSerializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/view/ViewSwing.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app-showcase/src/test/java/Tests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="08c0914d-b1b9-4648-a6ac-be09ae099e33" name="Changes" comment="FINAL COMMIT.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app-showcase/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/MyManagerException.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/MyManagerException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/fetchers/DataLakeEnergyFetcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/fetchers/DataLakeEnergyFetcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/fetchers/DataLakeFetcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/fetchers/DataLakeFetcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/fetchers/DataLakeWeatherFetcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/fetchers/DataLakeWeatherFetcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/handlers/EnergyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/handlers/EnergyHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/handlers/WeatherHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/handlers/WeatherHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/schemas/EnergyPrice.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/schemas/EnergyPrice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/schemas/Weather.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/schemas/Weather.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/subscribers/EnergySubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/subscribers/EnergySubscriber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/subscribers/Subscriber.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/subscribers/WeatherSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/subscribers/WeatherSubscriber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/model/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/view/ViewFirst.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/src/test/java/Tests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/datalake-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/FileEventStoreBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/datalake-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/FileEventStoreBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datalake-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/TopicSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/datalake-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/TopicSubscriber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/JMSPriceStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/JMSPriceStore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/JMSWeatherStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/JMSWeatherStore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/OpenWeatherMapSupplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/OpenWeatherMapSupplier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/model/Weather.java" beforeDir="false" afterPath="$PROJECT_DIR$/weather-provider/src/main/java/marrero_ferrera_gcid_ulpgc/model/Weather.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/fetchers/WeatherSerializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/handlers/WeatherHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/handlers/WeatherHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/subscribers/EnergySubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/subscribers/EnergySubscriber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/subscribers/WeatherSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/subscribers/WeatherSubscriber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/app-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/model/Model.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +97,7 @@
       <recent name="marrero_ferrera_gcid_ulpgc.model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.Main (3)">
     <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="marrero_ferrera_gcid_ulpgc.control.Main" />
       <module name="energy-provider" />
@@ -150,6 +127,7 @@
     <configuration name="Main (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="marrero_ferrera_gcid_ulpgc.control.Main" />
       <module name="app-showcase" />
+      <option name="PROGRAM_PARAMETERS" value="10 5 500" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="marrero_ferrera_gcid_ulpgc.control.*" />
@@ -282,9 +260,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main (3)" />
         <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main (2)" />
-        <item itemvalue="Application.Main (3)" />
         <item itemvalue="Application.ViewTest" />
         <item itemvalue="Application.Tests" />
       </list>
@@ -314,7 +292,7 @@
       <workItem from="1704636645005" duration="22115000" />
       <workItem from="1704708695024" duration="26267000" />
       <workItem from="1704753763319" duration="5802000" />
-      <workItem from="1704790616140" duration="27743000" />
+      <workItem from="1704790616140" duration="28501000" />
     </task>
     <task id="LOCAL-00001" summary="Commit Re-Adjustment">
       <option name="closed" value="true" />
@@ -516,7 +494,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704761663550</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="FINAL COMMIT.">
+      <option name="closed" value="true" />
+      <created>1704828763512</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1704828763512</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -552,16 +538,12 @@
     <MESSAGE value="datalake-builder now builds from both topics" />
     <MESSAGE value="re-adjusment made. Needed to build the List of items and the ViewFinal." />
     <MESSAGE value="Problems with Fetcher while deserializing." />
-    <option name="LAST_COMMIT_MESSAGE" value="Problems with Fetcher while deserializing." />
+    <MESSAGE value="FINAL COMMIT." />
+    <option name="LAST_COMMIT_MESSAGE" value="FINAL COMMIT." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/datalake-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java</url>
-          <line>2</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java</url>
           <line>12</line>
@@ -581,6 +563,11 @@
           <url>file://$PROJECT_DIR$/app-showcase/src/test/java/ViewTest.java</url>
           <line>10</line>
           <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/datalake-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java</url>
+          <line>7</line>
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/datalake-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/TopicSubscriber.java</url>

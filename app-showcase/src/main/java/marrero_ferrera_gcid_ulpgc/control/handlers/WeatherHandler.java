@@ -1,8 +1,5 @@
 package marrero_ferrera_gcid_ulpgc.control.handlers;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import marrero_ferrera_gcid_ulpgc.control.schemas.Weather;
 import marrero_ferrera_gcid_ulpgc.model.Model;
 
