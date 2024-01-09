@@ -6,9 +6,9 @@ import java.time.Instant;
 import java.util.ArrayList;
 
 public class Model {
-    ArrayList<Item> finalItems;
     ArrayList<Item> weatherItems;
     ArrayList<Item> energyItems;
+    ArrayList<Item> finalItems;
     float powerChargeSolar;
     float powerChargeWind;
     float batteryCapacity;
@@ -20,10 +20,6 @@ public class Model {
         this.finalItems = new ArrayList<>();
     }
 
-    public ArrayList<Item> getFinalItems() {
-        return finalItems;
-    }
-
     public ArrayList<Item> getWeatherItems() {
         return weatherItems;
     }
@@ -31,14 +27,19 @@ public class Model {
     public ArrayList<Item> getEnergyItems() {
         return energyItems;
     }
-    public void addFinalItem(Item item) {
-        finalItems.add(item);
+
+    public ArrayList<Item> getFinalItems() {
+        return finalItems;
+    }
+
+    public void addEnergyItem(Item item) {
+        energyItems.add(item);
     }
     public void addWeatherItem(Item item) {
         weatherItems.add(item);
     }
-    public void addEnergyItem(Item item) {
-        energyItems.add(item);
+    public void addFinalItem(Item item) {
+        finalItems.add(item);
     }
 
     public void setRenewableFields(float powerChargeSolar, float powerChargeWind, float batteryCapacity,
@@ -145,7 +146,15 @@ public class Model {
 
         @Override
         public String toString() {
-            return "Item: " + getPredictionTime() + ", " + getPrice() + ", " + getWeatherType() + ", " + ", " + getSolarGained() + ", " + getWindGained() + ", " + getBatteryGained();
+            return "Item{" +
+                    "predictionTime=" + predictionTime +
+                    ", weatherType='" + weatherType + '\'' +
+                    ", windGained=" + windGained +
+                    ", solarGained=" + solarGained +
+                    ", batteryGained=" + batteryGained +
+                    ", price=" + price +
+                    ", slot=" + slot +
+                    '}';
         }
     }
 }

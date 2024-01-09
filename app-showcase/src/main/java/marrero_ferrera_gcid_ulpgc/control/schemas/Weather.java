@@ -1,6 +1,7 @@
 package marrero_ferrera_gcid_ulpgc.control.schemas;
 
 import java.time.Instant;
+import java.util.Objects;
 
 public class Weather {
     private final Instant ts;
@@ -112,6 +113,29 @@ public class Weather {
         return predictionTime;
     }
 
-    public record Location(float latitude, float longitude, String name) {
+
+    public static final class Location {
+        private final double latitude;
+        private final double longitude;
+        private final String name;
+
+        public Location(double latitude, double longitude, String name) {
+            this.latitude = latitude;
+            this.longitude = longitude;
+            this.name = name;
+        }
+
+        public double latitude() {
+            return latitude;
+        }
+
+        public double longitude() {
+            return longitude;
+        }
+
+        public String name() {
+            return name;
+        }
+
     }
 }

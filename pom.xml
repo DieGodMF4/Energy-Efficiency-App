@@ -11,7 +11,7 @@
     <modules>
         <module>weather-provider</module>
         <module>energy-provider</module>
-        <module>business-showcase</module>
+        <module>app-showcase</module>
         <module>datalake-builder</module>
     </modules>
 

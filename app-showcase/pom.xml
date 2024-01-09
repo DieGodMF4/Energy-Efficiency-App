@@ -9,7 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>business-showcase</artifactId>
+    <artifactId>app-showcase</artifactId>
 
     <build>
         <plugins>

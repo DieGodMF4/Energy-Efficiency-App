@@ -42,7 +42,7 @@ public record JMSPriceStore(String url, String topicName) implements PriceStore 
     static class InstantSerializer implements JsonSerializer<Instant> {
         @Override
         public JsonElement serialize(Instant instant, Type typeOfSrc, JsonSerializationContext context) {
-            return new JsonPrimitive(instant.toString());
+            return new JsonPrimitive(instant.toEpochMilli());
         }
     }
 }

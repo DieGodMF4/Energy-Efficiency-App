@@ -15,7 +15,9 @@ import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.JMSException;
 import javax.jms.Session;
+import javax.swing.*;
 import java.time.Instant;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws MyManagerException {
@@ -35,24 +37,27 @@ public class Main {
         DataLakeFetcher weatherDataLakeFetcher = new DataLakeWeatherFetcher(topicNameWeather, Instant.now(), weatherHandler, additionalPath);
         DataLakeFetcher energyDataLakeFetcher = new DataLakeEnergyFetcher(topicNameEnergy, Instant.now(), energyHandler, additionalPath);
 
-        Session session = null;
+        Session session;
         try {
             session = buildSession(url);
         } catch (JMSException e) {
             throw new MyManagerException("An error occurred while creating the session.", e);
         }
-        new WeatherSubscriber(session, topicNameWeather, weatherHandler).start();
-        new EnergySubscriber(session, topicNameEnergy, energyHandler).start();
+        startSubscribers(session, topicNameWeather, weatherHandler, topicNameEnergy, energyHandler);
 
         if (weatherDataLakeFetcher.fileExists()) weatherDataLakeFetcher.fetchFiles();
-        else System.out.println("Weather File does not exist or is inaccessible");
+        else System.out.println("Weather File does not exist or is inaccessible Waiting for Weather Subscriber");
         if (energyDataLakeFetcher.fileExists()) energyDataLakeFetcher.fetchFiles();
-        else System.out.println("Energy File does not exist or is inaccessible");
+        else System.out.println("Energy File does not exist or is inaccessible. Waiting for Energy Subscriber");
 
-        for (Model.Item item : model.getFinalItems()) {
-            System.out.println(item.toString());
-        }
+        addWeatherFields(model);
         ViewSwing view = new ViewSwing(model);
+        viewFinalTable(view);
+    }
+
+    private static void startSubscribers(Session session, String topicNameWeather, WeatherHandler weatherHandler, String topicNameEnergy, EnergyHandler energyHandler) {
+        new WeatherSubscriber(session, topicNameWeather, weatherHandler).start();
+        new EnergySubscriber(session, topicNameEnergy, energyHandler).start();
     }
 
     private static Session buildSession(String url) throws JMSException {
@@ -61,6 +66,33 @@ public class Main {
         connection.setClientID("client-ID");
         connection.start();
         return connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+    }
+
+    private static void viewFinalTable(ViewSwing tableUI) {
+        tableUI.setTitle("Energy - Efficiency app");
+        tableUI.setSize(800, 600);
+        tableUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        tableUI.setVisible(true);
+    }
+
+    private static void addWeatherFields(Model model) {
+        for (Model.Item energyItem: model.getFinalItems()) {
+            boolean weatherExists = model.getWeatherItems().stream()
+                    .map(Model.Item::getPredictionTime)
+                    .anyMatch(instant -> instant.equals(energyItem.getPredictionTime()));
+            if (weatherExists) insertWeatherFields(energyItem, model.getWeatherItems());
+        }
+    }
+
+    private static void insertWeatherFields(Model.Item energyItem, ArrayList<Model.Item> weatherItems) {
+        for (Model.Item weatherItem : weatherItems) {
+            if (energyItem.getPredictionTime().equals(weatherItem.getPredictionTime())) {
+                energyItem.setWeatherType(weatherItem.getWeatherType());
+                energyItem.setWindGained(weatherItem.getWindGained());
+                energyItem.setSolarGained(weatherItem.getSolarGained());
+                energyItem.setBatteryGained(weatherItem.getBatteryGained());
+            }
+        }
     }
 
 }

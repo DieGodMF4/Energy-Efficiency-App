@@ -14,6 +14,22 @@ public class Weather {
     private float wind;
     private Location location;
 
+    @Override
+    public String toString() {
+        return "Weather{" +
+                "ts=" + ts +
+                ", ss='" + ss + '\'' +
+                ", predictionTime=" + predictionTime +
+                ", weatherType='" + weatherType + '\'' +
+                ", clouds=" + clouds +
+                ", temperature=" + temperature +
+                ", rain=" + rain +
+                ", humidity=" + humidity +
+                ", wind=" + wind +
+                ", location=" + location +
+                '}';
+    }
+
     public Weather(Instant predictionTime, String weatherType, int clouds, float temperature, float humidity, Location location, float rain, float wind) {
         this.predictionTime = predictionTime;
         this.weatherType = weatherType;

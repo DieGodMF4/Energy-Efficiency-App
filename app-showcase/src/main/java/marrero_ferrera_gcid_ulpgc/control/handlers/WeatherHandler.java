@@ -1,5 +1,8 @@
 package marrero_ferrera_gcid_ulpgc.control.handlers;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import marrero_ferrera_gcid_ulpgc.control.schemas.Weather;
 import marrero_ferrera_gcid_ulpgc.model.Model;
 
@@ -18,17 +21,16 @@ public class WeatherHandler {
     public void handle(Weather weatherEvent) {
         Model.Item item = processWeatherToItem(weatherEvent);
 
-        if (!isItemDuplicate(item.getPredictionTime(), item.getWeatherType())) {
+        if (!isItemDuplicate(item.getPredictionTime())) {
             model.addWeatherItem(item);
         }
     }
 
-    private boolean isItemDuplicate(Instant predictionTime, String weatherType) {
+    private boolean isItemDuplicate(Instant predictionTime) {
         ArrayList<Model.Item> items = model.getWeatherItems();
         return items.stream()
                 .filter(item -> item.getWeatherType() != null)
-                .anyMatch(item -> item.getPredictionTime().equals(predictionTime) &&
-                        item.getWeatherType().equals(weatherType));
+                .anyMatch(item -> item.getPredictionTime().equals(predictionTime));
     }
 
     private Model.Item processWeatherToItem(Weather weather) {
@@ -48,7 +50,7 @@ public class WeatherHandler {
             float windEfficiency = getWindEfficiency(weather);
             float solarEfficiency = getSolarEfficiency(weather);
             int multiplier = model.isRecommendedHalfBattery() ? 2 : 1;
-            return ((windEfficiency / batteryCapacity) + (solarEfficiency / batteryCapacity)) * multiplier;
+            return 3 * ((windEfficiency / batteryCapacity) + (solarEfficiency / batteryCapacity)) * multiplier;
         }
     }
 

@@ -17,17 +17,16 @@ public class EnergyHandler {
     public void handle(EnergyPrice energyEvent) {
         Model.Item item = processEnergyProvider(energyEvent);
 
-        if (!isItemDuplicate(item.getPredictionTime(), item.getPrice())) {
-            model.addEnergyItem(item);
+        if (!isItemDuplicate(item.getPredictionTime())) {
+            model.addFinalItem(item);
         }
     }
 
-    private boolean isItemDuplicate(Instant predictionTime, float price) {
-        ArrayList<Model.Item> items = model.getEnergyItems();
+    private boolean isItemDuplicate(Instant predictionTime) {
+        ArrayList<Model.Item> items = model.getFinalItems();
         return items.stream()
                 .filter(item -> Objects.nonNull(item.getPrice()))
-                .anyMatch(item -> item.getPredictionTime().equals(predictionTime) &&
-                        Float.compare(item.getPrice(), price) == 0);
+                .anyMatch(item -> item.getPredictionTime().equals(predictionTime));
     }
 
     private Model.Item processEnergyProvider(EnergyPrice energyPrice) {

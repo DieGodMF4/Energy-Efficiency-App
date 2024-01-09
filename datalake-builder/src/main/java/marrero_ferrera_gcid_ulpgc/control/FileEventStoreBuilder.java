@@ -1,7 +1,5 @@
 package marrero_ferrera_gcid_ulpgc.control;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -17,8 +15,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class FileEventStoreBuilder implements EventStoreBuilder {
-
-    private static final SimpleDateFormat JSON_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
     private final String basePath;
     private final String topicName;
 
@@ -49,12 +45,7 @@ public class FileEventStoreBuilder implements EventStoreBuilder {
             Files.createDirectories(directoryPath);
             File file = new File(filePath);
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
-                ObjectMapper objectMapper = new ObjectMapper();
-                objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
-                if (file.length() > 0) {
-                    writer.newLine();
-                }
-                objectMapper.writeValue(writer, jsonString);
+                    writer.write(jsonString+"\n");
             }
         } catch (IOException e) {
             throw new MyReceiverException("An error occurred while introducing the Strings into the File.", e);
@@ -66,8 +57,8 @@ public class FileEventStoreBuilder implements EventStoreBuilder {
     }
 
     private String extractDate(JsonObject jsonNode) throws ParseException {
-        String tsValue = jsonNode.get("predictionTime").getAsString();
-        Date date = JSON_DATE_FORMAT.parse(tsValue);
+        long tsValue = jsonNode.get("predictionTime").getAsLong();
+        Date date = new Date(tsValue);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
         return dateFormat.format(date);
     }

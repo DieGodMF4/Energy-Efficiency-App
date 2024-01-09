@@ -1,8 +1,7 @@
 package marrero_ferrera_gcid_ulpgc.control.subscribers;
 
 import com.google.gson.Gson;
-import marrero_ferrera_gcid_ulpgc.control.handlers.EnergyHandler;
-import marrero_ferrera_gcid_ulpgc.control.schemas.EnergyPrice;
+import marrero_ferrera_gcid_ulpgc.control.handlers.WeatherHandler;
 import marrero_ferrera_gcid_ulpgc.control.schemas.Weather;
 import org.apache.activemq.command.ActiveMQTopic;
 
@@ -11,15 +10,15 @@ import javax.jms.Session;
 import javax.jms.TextMessage;
 import javax.jms.TopicSubscriber;
 
-public class EnergySubscriber {
+public class WeatherSubscriber {
     private final Session session;
     private final String topic;
-    private final EnergyHandler energyHandler;
+    private final WeatherHandler weatherHandler;
 
-    public EnergySubscriber(Session session, String topicNameEnergy, EnergyHandler energyHandler) {
+    public WeatherSubscriber(Session session, String topic, WeatherHandler weatherHandler) {
         this.session = session;
-        this.topic = topicNameEnergy;
-        this.energyHandler = energyHandler;
+        this.topic = topic;
+        this.weatherHandler = weatherHandler;
     }
 
     public void start() {
@@ -27,7 +26,7 @@ public class EnergySubscriber {
             TopicSubscriber durableSubscriber = session.createDurableSubscriber(new ActiveMQTopic(topic), "client-id " + topic);
             durableSubscriber.setMessageListener(m -> {
                 try {
-                    energyHandler.handle(new Gson().fromJson(((TextMessage) m).getText(), EnergyPrice.class));
+                    weatherHandler.handle(new Gson().fromJson(((TextMessage) m).getText(), Weather.class));
                 } catch (JMSException e) {
                     throw new RuntimeException(e);
                 }
@@ -36,5 +35,4 @@ public class EnergySubscriber {
             throw new RuntimeException(e);
         }
     }
-
 }
