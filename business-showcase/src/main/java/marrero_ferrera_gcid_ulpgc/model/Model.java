@@ -4,24 +4,41 @@ import marrero_ferrera_gcid_ulpgc.control.schemas.EnergyPrice;
 
 import java.time.Instant;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Model {
-    ArrayList<Item> items;
+    ArrayList<Item> finalItems;
+    ArrayList<Item> weatherItems;
+    ArrayList<Item> energyItems;
     float powerChargeSolar;
     float powerChargeWind;
     float batteryCapacity;
     boolean recommendedHalfBattery;
 
     public Model(){
-        this.items = new ArrayList<>();
+        this.weatherItems = new ArrayList<>();
+        this.energyItems = new ArrayList<>();
+        this.finalItems = new ArrayList<>();
     }
 
-    public ArrayList<Item> getItems() {
-        return items;
+    public ArrayList<Item> getFinalItems() {
+        return finalItems;
     }
-    public void addItem(Item item) {
-        items.add(item);
+
+    public ArrayList<Item> getWeatherItems() {
+        return weatherItems;
+    }
+
+    public ArrayList<Item> getEnergyItems() {
+        return energyItems;
+    }
+    public void addFinalItem(Item item) {
+        finalItems.add(item);
+    }
+    public void addWeatherItem(Item item) {
+        weatherItems.add(item);
+    }
+    public void addEnergyItem(Item item) {
+        energyItems.add(item);
     }
 
     public void setRenewableFields(float powerChargeSolar, float powerChargeWind, float batteryCapacity,
@@ -128,7 +145,7 @@ public class Model {
 
         @Override
         public String toString() {
-            return "Model: " + getPredictionTime() + ", " + getPrice() + ", " + getWeatherType() + ", " + ", " + getSolarGained() + ", " + getWindGained() + ", " + getBatteryGained();
+            return "Item: " + getPredictionTime() + ", " + getPrice() + ", " + getWeatherType() + ", " + ", " + getSolarGained() + ", " + getWindGained() + ", " + getBatteryGained();
         }
     }
 }

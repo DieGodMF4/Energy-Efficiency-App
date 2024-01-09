@@ -19,12 +19,12 @@ public class WeatherHandler {
         Model.Item item = processWeatherToItem(weatherEvent);
 
         if (!isItemDuplicate(item.getPredictionTime(), item.getWeatherType())) {
-            model.addItem(item);
+            model.addWeatherItem(item);
         }
     }
 
     private boolean isItemDuplicate(Instant predictionTime, String weatherType) {
-        ArrayList<Model.Item> items = model.getItems();
+        ArrayList<Model.Item> items = model.getWeatherItems();
         return items.stream()
                 .filter(item -> item.getWeatherType() != null)
                 .anyMatch(item -> item.getPredictionTime().equals(predictionTime) &&

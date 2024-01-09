@@ -8,6 +8,7 @@ import marrero_ferrera_gcid_ulpgc.control.handlers.WeatherHandler;
 import marrero_ferrera_gcid_ulpgc.control.subscribers.EnergySubscriber;
 import marrero_ferrera_gcid_ulpgc.control.subscribers.WeatherSubscriber;
 import marrero_ferrera_gcid_ulpgc.model.Model;
+import marrero_ferrera_gcid_ulpgc.view.ViewSwing;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.Connection;
@@ -48,10 +49,10 @@ public class Main {
         if (energyDataLakeFetcher.fileExists()) energyDataLakeFetcher.fetchFiles();
         else System.out.println("Energy File does not exist or is inaccessible");
 
-        for (Model.Item item : model.getItems()) {
+        for (Model.Item item : model.getFinalItems()) {
             System.out.println(item.toString());
         }
-        // ViewFinal.launch() // Pasando como parámetro Model model.
+        ViewSwing view = new ViewSwing(model);
     }
 
     private static Session buildSession(String url) throws JMSException {

@@ -4,31 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08c0914d-b1b9-4648-a6ac-be09ae099e33" name="Changes" comment="datalake-builder now builds from both topics">
-      <change afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/fetchers/DataLakeEnergyFetcher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/handlers/EnergyHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/handlers/WeatherHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/subscribers/EnergySubscriber.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/subscribers/WeatherSubscriber.java" afterDir="false" />
+    <list default="true" id="08c0914d-b1b9-4648-a6ac-be09ae099e33" name="Changes" comment="Problems with Fetcher while deserializing.">
+      <change afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/view/ViewSwing.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business-showcase/src/test/java/ViewTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/BuildModelFinal.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/BuildModelFinal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/BusinessController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/DataLakeFetcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/fetchers/DataLakeWeatherFetcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/Fetcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/fetchers/DataLakeFetcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/JsonOperator.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/JsonOperator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/BuildModelFinal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/JsonOperator.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/Subscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/subscribers/Subscriber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/TopicSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/TopicSubscriber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/handlers/EnergyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/handlers/EnergyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/handlers/WeatherHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control/handlers/WeatherHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/model/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/view/ViewFinal.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/view/ViewFinal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/view/ViewFirst.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/view/ViewFirst.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business-showcase/src/test/java/Tests.java" beforeDir="false" afterPath="$PROJECT_DIR$/business-showcase/src/test/java/Tests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datalake-builder/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/datalake-builder/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/energy-provider/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/energy-provider/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/energy-provider/src/test/java/Tests.java" beforeDir="false" afterPath="$PROJECT_DIR$/energy-provider/src/test/java/Tests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather-provider/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/weather-provider/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/view/ViewFinal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/datalake-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/datalake-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,12 +26,17 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -64,25 +57,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/dmarr/IdeaProjects/final_project/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propCompiler&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "re-adjustment",
+    "jdk.selected.JAVA_MODULE": "17",
+    "last_opened_file_path": "C:/Users/dmarr/IdeaProjects/final_project/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/control",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "project.propCompiler",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="marrero_ferrera_gcid_ulpgc.control" />
@@ -103,15 +97,28 @@
       <recent name="marrero_ferrera_gcid_ulpgc.control.handlers" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="marrero_ferrera_gcid_ulpgc.control.schemas" />
       <recent name="marrero_ferrera_gcid_ulpgc.control" />
       <recent name="marrero_ferrera_gcid_ulpgc.model" />
-      <recent name="marrero_ferrera_gcid_ulpgc.control.schemas" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ViewFirst">
+  <component name="RunManager" selected="Application.Main (2)">
     <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="marrero_ferrera_gcid_ulpgc.control.Main" />
       <module name="energy-provider" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="marrero_ferrera_gcid_ulpgc.control.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="marrero_ferrera_gcid_ulpgc.control.Main" />
+      <module name="datalake-builder" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="marrero_ferrera_gcid_ulpgc.control.*" />
@@ -228,22 +235,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tests (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Tests" />
-      <module name="energy-provider" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Tests" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Tests" />
-      <module name="business-showcase" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ViewFirst" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="marrero_ferrera_gcid_ulpgc.view.ViewFirst" />
+    <configuration name="ViewFinal" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="marrero_ferrera_gcid_ulpgc.view.ViewFinal" />
       <module name="business-showcase" />
       <option name="VM_PARAMETERS" value="--module-path C:\Users\dmarr\javafx-sdk-21.0.1\lib --add-modules=javafx.controls" />
       <extension name="coverage">
@@ -256,13 +249,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ViewSwing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="marrero_ferrera_gcid_ulpgc.view.ViewSwing" />
+      <module name="business-showcase" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="marrero_ferrera_gcid_ulpgc.view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ViewTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ViewTest" />
+      <module name="business-showcase" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ViewFirst" />
         <item itemvalue="Application.Main (2)" />
         <item itemvalue="Application.Main (1)" />
-        <item itemvalue="Application.Tests (1)" />
-        <item itemvalue="Application.Tests" />
+        <item itemvalue="Application.ViewTest" />
+        <item itemvalue="Application.ViewSwing" />
+        <item itemvalue="Application.ViewFinal" />
       </list>
     </recent_temporary>
   </component>
@@ -288,7 +301,8 @@
       <workItem from="1704484118614" duration="15639000" />
       <workItem from="1704560556974" duration="20081000" />
       <workItem from="1704636645005" duration="22115000" />
-      <workItem from="1704708695024" duration="22140000" />
+      <workItem from="1704708695024" duration="26267000" />
+      <workItem from="1704753763319" duration="5608000" />
     </task>
     <task id="LOCAL-00001" summary="Commit Re-Adjustment">
       <option name="closed" value="true" />
@@ -466,7 +480,23 @@
       <option name="project" value="LOCAL" />
       <updated>1704715476260</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="re-adjusment made. Needed to build the List of items and the ViewFinal.">
+      <option name="closed" value="true" />
+      <created>1704740188357</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1704740188357</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Problems with Fetcher while deserializing.">
+      <option name="closed" value="true" />
+      <created>1704743949450</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1704743949450</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -500,14 +530,16 @@
     <MESSAGE value="Needed: Computing together Weather and Energy partial Models." />
     <MESSAGE value="fix Energy-provider" />
     <MESSAGE value="datalake-builder now builds from both topics" />
-    <option name="LAST_COMMIT_MESSAGE" value="datalake-builder now builds from both topics" />
+    <MESSAGE value="re-adjusment made. Needed to build the List of items and the ViewFinal." />
+    <MESSAGE value="Problems with Fetcher while deserializing." />
+    <option name="LAST_COMMIT_MESSAGE" value="Problems with Fetcher while deserializing." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/datalake-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java</url>
-          <line>14</line>
+          <line>15</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -529,6 +561,16 @@
           <url>file://$PROJECT_DIR$/energy-provider/src/main/java/marrero_ferrera_gcid_ulpgc/control/Main.java</url>
           <line>18</line>
           <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/business-showcase/src/test/java/ViewTest.java</url>
+          <line>10</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/business-showcase/src/main/java/marrero_ferrera_gcid_ulpgc/view/ViewFirst.java</url>
+          <line>12</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/datalake-builder/src/main/java/marrero_ferrera_gcid_ulpgc/control/TopicSubscriber.java</url>

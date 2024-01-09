@@ -1,7 +1,5 @@
 package marrero_ferrera_gcid_ulpgc.control.handlers;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import marrero_ferrera_gcid_ulpgc.control.schemas.EnergyPrice;
 import marrero_ferrera_gcid_ulpgc.model.Model;
 
@@ -20,12 +18,12 @@ public class EnergyHandler {
         Model.Item item = processEnergyProvider(energyEvent);
 
         if (!isItemDuplicate(item.getPredictionTime(), item.getPrice())) {
-            model.addItem(item);
+            model.addEnergyItem(item);
         }
     }
 
     private boolean isItemDuplicate(Instant predictionTime, float price) {
-        ArrayList<Model.Item> items = model.getItems();
+        ArrayList<Model.Item> items = model.getEnergyItems();
         return items.stream()
                 .filter(item -> Objects.nonNull(item.getPrice()))
                 .anyMatch(item -> item.getPredictionTime().equals(predictionTime) &&

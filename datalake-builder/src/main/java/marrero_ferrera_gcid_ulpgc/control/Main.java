@@ -10,10 +10,11 @@ public class Main {
         String topicNameWeather = (args.length > 0) ? args[0] : "prediction.Weather";
         String topicNameEnergy = (args.length > 1) ? args[1] : "energy.MarketPrices";
         String url = (args.length > 2) ? args[2] : "tcp://localhost:61616";
-        String clientID = (args.length > 3) ? args[3] : "anonymous";
-        String basePath = (args.length > 4) ? args[4] : "datalake" + File.separator + "eventstore" + File.separator;
-        TopicSubscriber subscriberWeather = new TopicSubscriber(url, topicNameWeather, clientID, basePath);
-        TopicSubscriber subscriberEnergy = new TopicSubscriber(url, topicNameEnergy, clientID, basePath);
+        String clientID1 = (args.length > 3) ? args[3] : "anonymousWeather";
+        String clientID2 = (args.length > 4) ? args[4] : "anonymousEnergy";
+        String basePath = (args.length > 5) ? args[5] : "datalake" + File.separator + "eventstore" + File.separator;
+        TopicSubscriber subscriberWeather = new TopicSubscriber(url, topicNameWeather, clientID1, basePath);
+        TopicSubscriber subscriberEnergy = new TopicSubscriber(url, topicNameEnergy, clientID2, basePath);
 
         CountDownLatch latch = new CountDownLatch(2);
         ExecutorService executorService = Executors.newFixedThreadPool(2);
