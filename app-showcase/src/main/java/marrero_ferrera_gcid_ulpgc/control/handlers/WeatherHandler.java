@@ -58,11 +58,11 @@ public class WeatherHandler {
         float lowToModerateThreshold = 2.5f;
         float strongToStormyThreshold = 11.0f;
         float excessiveThreshold = 25.0f;
-        if (windSpeed < lowToModerateThreshold) return powerChargeWind * 0.4f;
+        if (windSpeed < lowToModerateThreshold) return 3 * powerChargeWind * 0.4f;
         else if (windSpeed >= lowToModerateThreshold && windSpeed < strongToStormyThreshold) {
-            return powerChargeWind;
+            return powerChargeWind * 3;
         } else if (windSpeed >= strongToStormyThreshold && windSpeed < excessiveThreshold) {
-            return powerChargeWind * 0.7f;
+            return powerChargeWind * 0.7f * 3;
         } else return 0.0f;
     }
 
@@ -74,13 +74,13 @@ public class WeatherHandler {
             int maxSolarThreshold = 25;
             int mediumSolarThreshold = 50;
             int minimumSolarThreshold = 80;
-            if (clouds <= maxSolarThreshold) return powerChargeSolar;
+            if (clouds <= maxSolarThreshold) return powerChargeSolar * 3;
             else if (clouds <= mediumSolarThreshold) {
-                return powerChargeSolar * 0.7f;
+                return powerChargeSolar * 0.7f * 3;
             } else if (clouds <= minimumSolarThreshold) {
-                return powerChargeSolar * 0.5f;
+                return powerChargeSolar * 0.5f * 3;
             } else if (clouds <= 100) {
-                return powerChargeSolar * 0.3f;
+                return powerChargeSolar * 0.3f * 3;
             } else return 0.0f;
         } else return 0.0f;
     }
